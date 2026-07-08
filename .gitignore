@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+
+# Local visual QA artifacts
+qa-*.png
+comparison-*.jpg
+hero-comparison*.jpg
+implementation-*.png
+implementation-*.jpg
+mobile-*.jpg
+hero-adjusted*.jpg
+section-*.jpg
+design-qa.md

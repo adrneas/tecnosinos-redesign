@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 780" role="presentation">
+  <defs>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9edf2" stop-opacity=".72"/>
+      <stop offset=".48" stop-color="#f7f8fa" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#dce2e9" stop-opacity=".62"/>
+    </linearGradient>
+    <filter id="soften" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+    <style>
+      .orbit { transform-box: fill-box; transform-origin: center; animation: orbit-rotation 24s linear infinite; }
+      @keyframes orbit-rotation { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { .orbit { animation: none; } }
+    </style>
+  </defs>
+  <g fill="none" stroke="url(#ribbon)" stroke-linecap="round" filter="url(#soften)" opacity=".7">
+    <ellipse cx="450" cy="310" rx="150" ry="252" stroke-width="72" transform="rotate(8 450 310)"/>
+    <ellipse cx="350" cy="505" rx="245" ry="145" stroke-width="82" transform="rotate(-34 350 505)"/>
+    <ellipse cx="550" cy="505" rx="245" ry="145" stroke-width="82" transform="rotate(34 550 505)"/>
+  </g>
+  <g class="orbit" fill="none" stroke="#c7d0dc" opacity=".9">
+    <ellipse cx="450" cy="390" rx="360" ry="315" stroke-width="2" stroke-dasharray="8 12"/>
+    <circle cx="450" cy="75" r="11" fill="#c7d0dc" stroke="none"/>
+    <circle cx="810" cy="390" r="8" fill="#c7d0dc" stroke="none"/>
+    <circle cx="450" cy="705" r="11" fill="#c7d0dc" stroke="none"/>
+    <circle cx="90" cy="390" r="8" fill="#c7d0dc" stroke="none"/>
+  </g>
+</svg>
