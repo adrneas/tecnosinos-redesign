@@ -119,7 +119,7 @@ img { display: block; max-width: 100%; }
 .ecosystem-card:hover .ecosystem-card__arrow { transform: rotate(-45deg) scale(1.08); }
 .ecosystem-card:hover .ecosystem-card__arrow * { stroke-width: 2.8; }
 
-.governance-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(560px, 1.5fr); gap: clamp(48px, 6vw, 96px); align-items: center; }
+.governance-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(560px, 1.5fr); gap: clamp(48px, 6vw, 96px); align-items: start; }
 .governance-copy { padding-right: 0; }
 .governance-copy > p { color: var(--muted); line-height: 1.65; font-size: .92rem; }
 .text-link { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; color: #869300; font-size: .67rem; font-weight: 800; text-transform: uppercase; }
