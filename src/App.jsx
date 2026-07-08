@@ -4,18 +4,25 @@ import logoWhite from "../logo-white.svg";
 import {
   ArrowRight,
   Bank,
+  Broadcast,
   Briefcase,
   Buildings,
+  Code,
+  Cpu,
   Flask,
+  GearSix,
   GraduationCap,
   Handshake,
+  Heartbeat,
   InstagramLogo,
+  Leaf,
   LinkedinLogo,
   List,
   MagnifyingGlass,
   Money,
   PaperPlaneTilt,
   RocketLaunch,
+  Sun,
   Target,
   UsersThree,
   X,
@@ -31,13 +38,13 @@ const pathways = [
 const partnerLogos = ["EMPRESA 01", "EMPRESA 02", "EMPRESA 03", "EMPRESA 04", "EMPRESA 05", "EMPRESA 06", "EMPRESA 07"];
 
 const ecosystem = [
-  "Tecnologia da informação",
-  "Semicondutores",
-  "Automação e engenharias",
-  "Comunicação e convergência digital",
-  "Tecnologias para a saúde",
-  "Energias renováveis",
-  "Tecnologias socioambientais",
+  { icon: Code, title: "Tecnologia da informação" },
+  { icon: Cpu, title: "Semicondutores" },
+  { icon: GearSix, title: "Automação e engenharias" },
+  { icon: Broadcast, title: "Comunicação e convergência digital" },
+  { icon: Heartbeat, title: "Tecnologias para a saúde" },
+  { icon: Sun, title: "Energias renováveis" },
+  { icon: Leaf, title: "Tecnologias socioambientais" },
 ];
 
 const events = [
@@ -311,7 +318,7 @@ export function App() {
           <div className="container" data-reveal>
             <SectionTitle eyebrow="Inovação aplicada" description="Explore as competências do ecossistema e acesse cada frente de atuação.">Um ecossistema de possibilidades.</SectionTitle>
             <div className="ecosystem-grid">
-              {ecosystem.map((item, index) => <a className="ecosystem-card" href="#contato" key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong><ArrowRight /></a>)}
+              {ecosystem.map(({ icon: Icon, title }) => <a className="ecosystem-card" href="#contato" key={title}><Icon className="ecosystem-card__icon" weight="regular" aria-hidden="true" /><strong>{title}</strong><ArrowRight className="ecosystem-card__arrow" /></a>)}
             </div>
           </div>
         </section>

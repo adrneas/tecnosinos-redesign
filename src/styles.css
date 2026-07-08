@@ -110,14 +110,14 @@ img { display: block; max-width: 100%; }
 .ecosystem-card > * { position: relative; z-index: 1; }
 .ecosystem-card:nth-child(1), .ecosystem-card:nth-child(2) { grid-column: span 5; }
 .ecosystem-card:nth-child(3) { grid-column: span 2; }
-.ecosystem-card span { font-family: var(--font-display); font-size: 2.35rem; font-weight: 700; color: var(--lime); }
+.ecosystem-card__icon { justify-self: start; align-self: start; width: 44px; height: 44px; color: var(--lime); }
 .ecosystem-card strong { max-width: 240px; margin-top: 28px; align-self: start; font-family: var(--font-display); font-size: 1.65rem; line-height: .97; text-transform: uppercase; }
-.ecosystem-card svg { justify-self: end; align-self: end; width: 27px; height: 27px; margin-top: 18px; transition: transform .24s ease; }
-.ecosystem-card svg * { transition: stroke-width .24s ease; }
+.ecosystem-card__arrow { justify-self: end; align-self: end; width: 27px; height: 27px; margin-top: 18px; transition: transform .24s ease; }
+.ecosystem-card__arrow * { transition: stroke-width .24s ease; }
 .ecosystem-card:hover { background: var(--navy); border-color: var(--navy); color: white; transform: translateY(-2px); }
 .ecosystem-card:hover::before { opacity: .1; }
-.ecosystem-card:hover svg { transform: rotate(-45deg) scale(1.08); }
-.ecosystem-card:hover svg * { stroke-width: 2.8; }
+.ecosystem-card:hover .ecosystem-card__arrow { transform: rotate(-45deg) scale(1.08); }
+.ecosystem-card:hover .ecosystem-card__arrow * { stroke-width: 2.8; }
 
 .governance-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(560px, 1.5fr); gap: clamp(48px, 6vw, 96px); align-items: center; }
 .governance-copy { padding-right: 0; }
