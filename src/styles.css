@@ -119,11 +119,12 @@ img { display: block; max-width: 100%; }
 .ecosystem-card:hover .ecosystem-card__arrow { transform: rotate(-45deg) scale(1.08); }
 .ecosystem-card:hover .ecosystem-card__arrow * { stroke-width: 2.8; }
 
-.governance-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(560px, 1.5fr); gap: clamp(48px, 6vw, 96px); align-items: start; }
+.governance { padding: clamp(72px, 7vw, 104px) 0 clamp(84px, 7vw, 120px); }
+.governance-grid { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(560px, 1.5fr); gap: clamp(48px, 6vw, 96px); align-items: center; }
 .governance-copy { padding-right: 0; }
 .governance-copy > p { color: var(--muted); line-height: 1.65; font-size: .92rem; }
 .text-link { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; color: #869300; font-size: .67rem; font-weight: 800; text-transform: uppercase; }
-.triple-helix { position: relative; width: min(100%, 850px); aspect-ratio: 900 / 780; margin-inline: auto; isolation: isolate; transform: scale(.85); transform-origin: center; }
+.triple-helix { position: relative; width: min(100%, 700px); aspect-ratio: 900 / 780; margin-inline: auto; isolation: isolate; }
 .triple-helix__background, .helix-connections { position: absolute; inset: 0; width: 100%; height: 100%; }
 .triple-helix__background { z-index: -1; object-fit: contain; }
 .helix-connections { z-index: 1; overflow: visible; color: #9bae00; }
@@ -282,6 +283,7 @@ img { display: block; max-width: 100%; }
   .section { padding: 80px 0; }
   .section-heading h2 { font-size: 3.35rem; }
   .ecosystem-card, .ecosystem-card:nth-child(1), .ecosystem-card:nth-child(2), .ecosystem-card:nth-child(3) { grid-column: span 12; min-height: 176px; }
+  .governance { padding: 64px 0 82px; }
   .governance-grid { gap: 46px; }
   .triple-helix { width: calc(100% + 12px); margin-left: -6px; }
   .helix-node__icon { width: clamp(88px, 25vw, 108px); border-width: 3px; }

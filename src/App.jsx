@@ -155,8 +155,8 @@ function SectionTitle({ eyebrow, children, description }) {
 
 const governanceForces = [
   { icon: Bank, position: "public", title: "Poder público", text: "Prefeitura de São Leopoldo" },
-  { icon: UsersThree, position: "companies", title: "Empresas", text: "ACIS-SL + Polo de Informática" },
-  { icon: GraduationCap, position: "academia", title: "Academia", text: "Universidades" },
+  { icon: UsersThree, position: "companies", title: "Empresas", text: "Iniciativa Privada" },
+  { icon: GraduationCap, position: "academia", title: "Academia", text: "Unisinos" },
 ];
 
 function TripleHelixConnections() {
