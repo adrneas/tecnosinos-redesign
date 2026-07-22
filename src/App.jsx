@@ -274,7 +274,9 @@ export function App() {
               <p>O Tecnosinos conecta empresas,<br className="hero-break" />startups, talentos, pesquisa e poder público<br className="hero-break" />para transformar conhecimento em impacto.</p>
             </div>
             <div className="hero-art">
-              <img src="/heroimg.png" alt="Pessoas, ideias e espaços que formam o parque de inovação" />
+              <video autoPlay muted loop playsInline preload="metadata" aria-label="Pessoas, ideias e espaços que formam o parque de inovação">
+                <source src="/hero-video.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
 
