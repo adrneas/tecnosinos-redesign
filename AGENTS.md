@@ -9,7 +9,7 @@ When implementing from a selected generated mock, treat that image as the source
 ## Confirmed project decisions
 
 - Use `referencia.png` as the composition and content reference, but normalize typography, spacing, and component scale.
-- Use the user-provided `hero-video.mp4` as the autoplaying, muted, looping hero artwork.
+- Use the user-provided `hero-video-2026.mp4` as the autoplaying, muted, looping hero artwork.
 - Use `logo-grey.svg` in the light header and `logo-white.svg` in the dark footer.
 - Render the company-logo strip as an auto-rotating carousel with generic placeholders until the real partner logos are supplied.
 - The company-logo strip uses `#f7f7f6` and must move as a seamless, continuous infinite marquee without resetting visibly.

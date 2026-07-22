@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import logoGrey from "../logo-grey.svg";
 import logoWhite from "../logo-white.svg";
 import {
@@ -7,6 +7,7 @@ import {
   Broadcast,
   Briefcase,
   Buildings,
+  CaretDown,
   Code,
   Cpu,
   Flask,
@@ -27,6 +28,219 @@ import {
   UsersThree,
   X,
 } from "@phosphor-icons/react";
+
+const megaMenus = {
+  park: {
+    columns: [
+      {
+        title: "Conheça o ecossistema",
+        links: [
+          ["Visão geral", "O parque, sua atuação e seus números", "#sobre"],
+          ["Áreas de atuação", "Competências que movem o ecossistema", "#ecossistema"],
+          ["Conexões globais", "Redes, mercados e internacionalização", "#global"],
+        ],
+      },
+      {
+        title: "Empresas",
+        links: [
+          ["Diretório de empresas", "Conheça quem faz parte do parque", "#ecossistema"],
+          ["Empresas consolidadas", "Negócios de base tecnológica", "#ecossistema"],
+          ["Startups", "Incubadas, graduadas e residentes", "#ecossistema"],
+          ["Buscar por área", "Encontre competências e parceiros", "#ecossistema"],
+        ],
+      },
+      {
+        title: "Espaços e infraestrutura",
+        links: [
+          ["Laboratórios e institutos", "Pesquisa, testes e prototipagem", "#ecossistema"],
+          ["Auditórios e salas", "Estrutura para encontros e eventos", "#talentos"],
+          ["Condomínios empresariais", "Espaços para instalar sua empresa", "#contato"],
+        ],
+      },
+      {
+        title: "Visite o parque",
+        links: [
+          ["Localização e estrutura", "Parque, prédios e pontos de referência", "#contato"],
+          ["Como chegar", "Acessos, transporte e estacionamento", "#contato"],
+          ["Mapa dos prédios", "Oriente-se dentro do ecossistema", "#contato"],
+        ],
+      },
+    ],
+    spotlight: {
+      eyebrow: "Explore o ecossistema",
+      title: "Mais de 110 empresas conectadas",
+      text: "Encontre organizações, startups e competências por área de atuação.",
+      link: "Ver diretório de empresas",
+      href: "#ecossistema",
+    },
+  },
+  unitec: {
+    columns: [
+      {
+        title: "Conheça a Unitec",
+        links: [
+          ["Sobre a incubadora", "Inovação e tecnologia da Unisinos", "#sobre"],
+          ["Benefícios para startups", "Estrutura, conexões e desenvolvimento", "#contato"],
+          ["Processo de incubação", "Da candidatura à graduação", "#contato"],
+        ],
+      },
+      {
+        title: "Comece sua jornada",
+        links: [
+          ["Pré-incubação", "Transforme uma ideia em oportunidade", "#contato"],
+          ["Incubação local", "Espaço e acompanhamento no parque", "#contato"],
+          ["Incubação híbrida", "Flexibilidade com presença no ecossistema", "#contato"],
+          ["Incubação a distância", "Desenvolvimento conectado de onde estiver", "#contato"],
+        ],
+      },
+      {
+        title: "Comunidade",
+        links: [
+          ["Startups incubadas", "Negócios que estão em desenvolvimento", "#ecossistema"],
+          ["Startups graduadas", "Empresas que cresceram com a Unitec", "#ecossistema"],
+          ["Mentores voluntários", "Experiência que impulsiona negócios", "#contato"],
+          ["Parceiros da Unitec", "Uma rede para inovar em conjunto", "#contato"],
+        ],
+      },
+      {
+        title: "Outras unidades",
+        secondary: true,
+        links: [
+          ["Unitec Esteio", "Conheça a unidade", "#contato"],
+          ["Unitec Canela", "Conheça a unidade", "#contato"],
+        ],
+      },
+    ],
+    spotlight: {
+      eyebrow: "Para empreendedores",
+      title: "Sua startup pode começar aqui",
+      text: "Descubra a modalidade mais adequada para o estágio do seu negócio.",
+      link: "Conhecer o programa",
+      href: "#contato",
+    },
+  },
+  talents: {
+    columns: [
+      {
+        title: "Oportunidades",
+        links: [
+          ["Vagas no ecossistema", "Trabalhe em empresas inovadoras", "#talentos"],
+          ["Bolsas e pesquisa", "Oportunidades de desenvolvimento", "#talentos"],
+          ["Trabalhe no parque", "Conecte sua carreira à inovação", "#talentos"],
+        ],
+      },
+      {
+        title: "Formação e desenvolvimento",
+        links: [
+          ["Programa Talentos", "Tecnologia, carreira e futuro", "#talentos"],
+          ["Projeto 3.000 Talentos", "Formação para a economia digital", "#talentos"],
+          ["Oficinas e capacitações", "Aprendizado conectado à prática", "#talentos"],
+          ["Atividades para escolas", "Experiências para jovens estudantes", "#talentos"],
+        ],
+      },
+      {
+        title: "Participação",
+        links: [
+          ["Visitas ao parque", "Conheça ambientes e empresas", "#contato"],
+          ["Empresas parceiras", "Aproxime talentos do mercado", "#contato"],
+          ["Seja mentor", "Compartilhe conhecimento e experiência", "#contato"],
+        ],
+      },
+    ],
+    spotlight: {
+      eyebrow: "Carreiras",
+      title: "Oportunidades em todo o ecossistema",
+      text: "Encontre vagas em tecnologia, engenharia, design e outras áreas.",
+      link: "Ver vagas abertas",
+      href: "#talentos",
+    },
+  },
+  research: {
+    columns: [
+      {
+        title: "Competências",
+        links: [
+          ["Áreas tecnológicas", "Conhecimento aplicado a desafios reais", "#ecossistema"],
+          ["Institutos tecnológicos", "Pesquisa avançada com a Unisinos", "#ecossistema"],
+          ["Laboratórios", "Teste, validação e prototipagem", "#ecossistema"],
+          ["Pesquisa aplicada", "Da descoberta à solução", "#publicacoes"],
+        ],
+      },
+      {
+        title: "Projetos e parcerias",
+        links: [
+          ["Inovação aberta", "Conecte desafios a especialistas", "#contato"],
+          ["Desenvolva um projeto", "Construa soluções com o ecossistema", "#contato"],
+          ["Encontre competências", "Acesse empresas, talentos e pesquisa", "#ecossistema"],
+          ["Resultados e conhecimento", "Veja o impacto de projetos realizados", "#publicacoes"],
+        ],
+      },
+      {
+        title: "Programas e conexões",
+        links: [
+          ["Prêmio Roser", "Ideias que respondem a problemas reais", "#publicacoes"],
+          ["Greentech Park", "Tecnologia para futuros sustentáveis", "#ecossistema"],
+          ["Conexões Tecnosinos", "Redes colaborativas para inovar", "#talentos"],
+          ["Internacionalização", "Softlanding, Take Off e redes globais", "#global"],
+        ],
+      },
+    ],
+    spotlight: {
+      eyebrow: "Inovação aberta",
+      title: "Transforme um desafio em projeto",
+      text: "Aproxime sua empresa das competências certas para pesquisar, testar e inovar.",
+      link: "Encontrar parceiros",
+      href: "#contato",
+    },
+  },
+  about: {
+    columns: [
+      {
+        title: "Institucional",
+        links: [
+          ["Institucional", "Missão, visão, valores, gestão e contatos", "#sobre"],
+          ["Governança", "A força da tríplice hélice", "#governanca"],
+          ["História", "Uma trajetória construída em conjunto", "#sobre"],
+          ["Reconhecimento", "Premiações e certificações", "#publicacoes"],
+        ],
+      },
+      {
+        title: "Parque + Sociedade",
+        links: [
+          ["Visão geral", "Impacto para além do parque", "#contato"],
+          ["Sustentabilidade e ESG", "Compromissos ambientais, sociais e de governança", "#contato"],
+          ["Mulheres Empreendedoras", "Conexões e protagonismo feminino", "#contato"],
+          ["Diversidade e Inclusão", "Um ecossistema plural e acessível", "#contato"],
+          ["Ações Solidárias", "Mobilização que transforma comunidades", "#contato"],
+        ],
+      },
+      {
+        title: "Rede e relacionamento",
+        links: [
+          ["Parceiros", "Organizações que constroem o ecossistema", "#contato"],
+          ["Sala de imprensa", "Informações e materiais institucionais", "#publicacoes"],
+          ["Contato", "Fale com a equipe Tecnosinos", "#contato"],
+        ],
+      },
+    ],
+    spotlight: {
+      eyebrow: "Tecnosinos",
+      title: "Inovação com impacto na sociedade",
+      text: "Conheça os compromissos e as pessoas que dão forma ao parque.",
+      link: "Conhecer o Tecnosinos",
+      href: "#sobre",
+    },
+  },
+};
+
+const joinOptions = [
+  [RocketLaunch, "Criar uma startup", "Tire uma ideia do papel com a Unitec", "#contato"],
+  [Buildings, "Instalar minha empresa", "Faça parte do ecossistema Tecnosinos", "#contato"],
+  [Briefcase, "Trabalhar no ecossistema", "Encontre vagas e oportunidades", "#talentos"],
+  [GraduationCap, "Estudar ou visitar", "Conheça programas, espaços e atividades", "#talentos"],
+  [Flask, "Desenvolver um projeto", "Encontre competências para inovar", "#contato"],
+  [Handshake, "Investir ou apoiar", "Conecte-se a negócios e iniciativas", "#contato"],
+];
 
 const pathways = [
   { icon: RocketLaunch, title: "Quero empreender", text: "Tenho apoio para criar e escalar sua startup." },
@@ -153,6 +367,54 @@ function SectionTitle({ eyebrow, children, description }) {
   );
 }
 
+function MegaMenu({ menu, onNavigate }) {
+  return (
+    <div className="mega-menu" role="region">
+      <div className="mega-menu__columns">
+        {menu.columns.map((column) => (
+          <div className={`mega-menu__column ${column.secondary ? "is-secondary" : ""}`} key={column.title}>
+            <strong className="mega-menu__heading">{column.title}</strong>
+            <div className="mega-menu__links">
+              {column.links.map(([label, description, href]) => (
+                <a href={href} onClick={onNavigate} key={label}>
+                  <span>{label}</span>
+                  <small>{description}</small>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <aside className="mega-menu__spotlight">
+        <small>{menu.spotlight.eyebrow}</small>
+        <strong>{menu.spotlight.title}</strong>
+        <p>{menu.spotlight.text}</p>
+        <a href={menu.spotlight.href} onClick={onNavigate}>{menu.spotlight.link} <ArrowRight /></a>
+      </aside>
+    </div>
+  );
+}
+
+function JoinOptions({ onNavigate, mobile = false }) {
+  return (
+    <div className={`join-menu ${mobile ? "join-menu--mobile" : ""}`} role="region" aria-label="Escolha como fazer parte">
+      <div className="join-menu__intro">
+        <small>Quero fazer parte</small>
+        <strong>Como podemos conectar você ao ecossistema?</strong>
+      </div>
+      <div className="join-menu__grid">
+        {joinOptions.map(([Icon, title, description, href]) => (
+          <a href={href} onClick={onNavigate} key={title}>
+            <Icon weight="regular" />
+            <span><strong>{title}</strong><small>{description}</small></span>
+            <ArrowRight />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const governanceForces = [
   { icon: Bank, position: "public", title: "Poder público", text: "Prefeitura de São Leopoldo" },
   { icon: UsersThree, position: "companies", title: "Empresas", text: "Iniciativa Privada" },
@@ -203,10 +465,13 @@ function TripleHelixDiagram() {
 
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeMegaMenu, setActiveMegaMenu] = useState(null);
+  const [joinMenuOpen, setJoinMenuOpen] = useState(false);
   const [jobFilter, setJobFilter] = useState("todas");
   const [searchOpen, setSearchOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const headerRef = useRef(null);
 
   const visibleJobs = useMemo(
     () => jobFilter === "todas" ? jobs : jobs.filter((job) => job.area === jobFilter),
@@ -240,6 +505,46 @@ export function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const closeOnOutsideClick = (event) => {
+      if (!headerRef.current?.contains(event.target)) {
+        setActiveMegaMenu(null);
+        setJoinMenuOpen(false);
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key !== "Escape") return;
+      setActiveMegaMenu(null);
+      setJoinMenuOpen(false);
+      setMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  const closeNavigation = () => {
+    setActiveMegaMenu(null);
+    setJoinMenuOpen(false);
+    setMenuOpen(false);
+  };
+
+  const toggleMegaMenu = (menuKey) => {
+    setJoinMenuOpen(false);
+    setSearchOpen(false);
+    setActiveMegaMenu((current) => current === menuKey ? null : menuKey);
+  };
+
+  const toggleJoinMenu = () => {
+    setActiveMegaMenu(null);
+    setSearchOpen(false);
+    setJoinMenuOpen((value) => !value);
+  };
+
   const submitNewsletter = (event) => {
     event.preventDefault();
     if (email.trim()) setSubscribed(true);
@@ -247,21 +552,68 @@ export function App() {
 
   return (
     <div id="top">
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <div className="container header-inner">
           <Brand />
           <nav className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
-            <a href="#sobre" onClick={() => setMenuOpen(false)}>O parque</a>
-            <a href="#ecossistema" onClick={() => setMenuOpen(false)}>Incubadora e Unitec</a>
-            <a href="#talentos" onClick={() => setMenuOpen(false)}>Talentos</a>
-            <a href="#publicacoes" onClick={() => setMenuOpen(false)}>Pesquisa e inovação</a>
-            <a href="#contato" onClick={() => setMenuOpen(false)}>Sobre</a>
+            {[
+              ["park", "O parque"],
+              ["unitec", "Incubadora e Unitec"],
+              ["talents", "Talentos"],
+              ["research", "Pesquisa e inovação"],
+            ].map(([menuKey, label]) => (
+              <Fragment key={menuKey}>
+                <button
+                  className={`nav-trigger ${activeMegaMenu === menuKey ? "is-active" : ""}`}
+                  type="button"
+                  aria-expanded={activeMegaMenu === menuKey}
+                  onClick={() => toggleMegaMenu(menuKey)}
+                  onMouseEnter={() => {
+                    if (activeMegaMenu) {
+                      setJoinMenuOpen(false);
+                      setActiveMegaMenu(menuKey);
+                    }
+                  }}
+                >
+                  {label}<CaretDown weight="bold" />
+                </button>
+                {activeMegaMenu === menuKey && (
+                  <div className="mobile-mega-wrapper">
+                    <MegaMenu menu={megaMenus[menuKey]} onNavigate={closeNavigation} />
+                  </div>
+                )}
+              </Fragment>
+            ))}
+            <a className="nav-direct-link" href="#publicacoes" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)} onClick={closeNavigation}>Publicações</a>
+            <button
+              className={`nav-trigger ${activeMegaMenu === "about" ? "is-active" : ""}`}
+              type="button"
+              aria-expanded={activeMegaMenu === "about"}
+              onClick={() => toggleMegaMenu("about")}
+              onMouseEnter={() => {
+                if (activeMegaMenu) {
+                  setJoinMenuOpen(false);
+                  setActiveMegaMenu("about");
+                }
+              }}
+            >
+              Sobre<CaretDown weight="bold" />
+            </button>
+            {activeMegaMenu === "about" && (
+              <div className="mobile-mega-wrapper">
+                <MegaMenu menu={megaMenus.about} onNavigate={closeNavigation} />
+              </div>
+            )}
+            <button className="mobile-join-trigger" type="button" aria-expanded={joinMenuOpen} onClick={toggleJoinMenu}>Quero fazer parte <CaretDown weight="bold" /></button>
+            {joinMenuOpen && <JoinOptions mobile onNavigate={closeNavigation} />}
           </nav>
           <div className="header-actions">
             <button className="icon-button search-button" onClick={() => setSearchOpen((value) => !value)} aria-label="Abrir busca"><MagnifyingGlass /></button>
-            <a className="button button--small" href="#contato">Quero fazer parte</a>
+            <button className={`button button--small join-trigger ${joinMenuOpen ? "is-active" : ""}`} type="button" aria-expanded={joinMenuOpen} onClick={toggleJoinMenu}>Quero fazer parte <CaretDown weight="bold" /></button>
             <button className="icon-button menu-button" onClick={() => setMenuOpen((value) => !value)} aria-label="Abrir menu">{menuOpen ? <X /> : <List />}</button>
           </div>
+          {activeMegaMenu && <div className="desktop-mega-wrapper"><MegaMenu menu={megaMenus[activeMegaMenu]} onNavigate={closeNavigation} /></div>}
+          {joinMenuOpen && <JoinOptions onNavigate={closeNavigation} />}
           {searchOpen && <div className="search-popover"><input autoFocus aria-label="Buscar no site" placeholder="O que você procura?" /><button aria-label="Buscar"><ArrowRight /></button></div>}
         </div>
       </header>
@@ -275,7 +627,7 @@ export function App() {
             </div>
             <div className="hero-art">
               <video autoPlay muted loop playsInline preload="metadata" aria-label="Pessoas, ideias e espaços que formam o parque de inovação">
-                <source src="/hero-video.mp4" type="video/mp4" />
+                <source src="/hero-video-2026.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
