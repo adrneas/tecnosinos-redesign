@@ -147,7 +147,6 @@ const megaMenus = {
           ["Programa Talentos", "Tecnologia, carreira e futuro", "/programa-talentos"],
           ["Projeto 3.000 Talentos", "Formação para a economia digital", "/estudar-ou-visitar"],
           ["Oficinas e capacitações", "Aprendizado conectado à prática", "/estudar-ou-visitar"],
-          ["Atividades para escolas", "Experiências para jovens estudantes", "/programa-talentos"],
         ],
       },
       {

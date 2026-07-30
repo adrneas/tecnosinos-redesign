@@ -30,3 +30,4 @@ When implementing from a selected generated mock, treat that image as the source
 - “Trabalhar no ecossistema” and every “Vagas no ecossistema” entry point lead to the searchable internal route `/vagas`, instead of anchoring back to the home-page careers section.
 - “Estudar ou visitar” leads to `/estudar-ou-visitar`, which connects visits, activities and the dedicated `/programa-talentos` journey.
 - The Programa Talentos page follows the established internal-page visual system and preserves the source program facts: active since 2011, aimed at 9th-grade, secondary and technical students, with park/lab/company visits, practical workshops, more than 4,000 participants and contact through `unitec@unisinos.br`.
+- In the Talentos mega menu, “Programa Talentos” is the single entry for school-oriented activities; do not add a redundant “Atividades para escolas” item.
