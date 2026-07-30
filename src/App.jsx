@@ -28,6 +28,18 @@ import {
   UsersThree,
   X,
 } from "@phosphor-icons/react";
+import { PublicationArticlePage, PublicationsPage } from "./PublicationsPages.jsx";
+import {
+  CompaniesPage,
+  CompanyProfilePage,
+  JobsPage,
+  OpenInnovationPage,
+  StudyVisitPage,
+  TalentsProgramPage,
+  UnitecPage,
+} from "./InternalPages.jsx";
+
+const featuredPublicationRoute = "/publicacoes/conexoes-internacionais-negocios-tecnologia";
 
 const megaMenus = {
   park: {
@@ -43,10 +55,10 @@ const megaMenus = {
       {
         title: "Empresas",
         links: [
-          ["Diretório de empresas", "Conheça quem faz parte do parque", "#ecossistema"],
+          ["Diretório de empresas", "Conheça quem faz parte do parque", "/empresas"],
           ["Empresas consolidadas", "Negócios de base tecnológica", "#ecossistema"],
           ["Startups", "Incubadas, graduadas e residentes", "#ecossistema"],
-          ["Buscar por área", "Encontre competências e parceiros", "#ecossistema"],
+          ["Buscar por área", "Encontre competências e parceiros", "/empresas"],
         ],
       },
       {
@@ -71,7 +83,7 @@ const megaMenus = {
       title: "Mais de 110 empresas conectadas",
       text: "Encontre organizações, startups e competências por área de atuação.",
       link: "Ver diretório de empresas",
-      href: "#ecossistema",
+      href: "/empresas",
     },
   },
   unitec: {
@@ -79,18 +91,18 @@ const megaMenus = {
       {
         title: "Conheça a Unitec",
         links: [
-          ["Sobre a incubadora", "Inovação e tecnologia da Unisinos", "#sobre"],
-          ["Benefícios para startups", "Estrutura, conexões e desenvolvimento", "#contato"],
-          ["Processo de incubação", "Da candidatura à graduação", "#contato"],
+          ["Sobre a incubadora", "Inovação e tecnologia da Unisinos", "/unitec"],
+          ["Benefícios para startups", "Estrutura, conexões e desenvolvimento", "/unitec"],
+          ["Processo de incubação", "Da candidatura à graduação", "/unitec#modalidades"],
         ],
       },
       {
         title: "Comece sua jornada",
         links: [
-          ["Pré-incubação", "Transforme uma ideia em oportunidade", "#contato"],
-          ["Incubação local", "Espaço e acompanhamento no parque", "#contato"],
-          ["Incubação híbrida", "Flexibilidade com presença no ecossistema", "#contato"],
-          ["Incubação a distância", "Desenvolvimento conectado de onde estiver", "#contato"],
+          ["Pré-incubação", "Transforme uma ideia em oportunidade", "/unitec#modalidades"],
+          ["Incubação local", "Espaço e acompanhamento no parque", "/unitec#modalidades"],
+          ["Incubação híbrida", "Flexibilidade com presença no ecossistema", "/unitec#modalidades"],
+          ["Incubação a distância", "Desenvolvimento conectado de onde estiver", "/unitec#modalidades"],
         ],
       },
       {
@@ -116,7 +128,7 @@ const megaMenus = {
       title: "Sua startup pode começar aqui",
       text: "Descubra a modalidade mais adequada para o estágio do seu negócio.",
       link: "Conhecer o programa",
-      href: "#contato",
+      href: "/unitec",
     },
   },
   talents: {
@@ -124,24 +136,24 @@ const megaMenus = {
       {
         title: "Oportunidades",
         links: [
-          ["Vagas no ecossistema", "Trabalhe em empresas inovadoras", "#talentos"],
-          ["Bolsas e pesquisa", "Oportunidades de desenvolvimento", "#talentos"],
-          ["Trabalhe no parque", "Conecte sua carreira à inovação", "#talentos"],
+          ["Vagas no ecossistema", "Trabalhe em empresas inovadoras", "/vagas"],
+          ["Bolsas e pesquisa", "Oportunidades de desenvolvimento", "/vagas"],
+          ["Trabalhe no parque", "Conecte sua carreira à inovação", "/vagas"],
         ],
       },
       {
         title: "Formação e desenvolvimento",
         links: [
-          ["Programa Talentos", "Tecnologia, carreira e futuro", "#talentos"],
-          ["Projeto 3.000 Talentos", "Formação para a economia digital", "#talentos"],
-          ["Oficinas e capacitações", "Aprendizado conectado à prática", "#talentos"],
-          ["Atividades para escolas", "Experiências para jovens estudantes", "#talentos"],
+          ["Programa Talentos", "Tecnologia, carreira e futuro", "/programa-talentos"],
+          ["Projeto 3.000 Talentos", "Formação para a economia digital", "/estudar-ou-visitar"],
+          ["Oficinas e capacitações", "Aprendizado conectado à prática", "/estudar-ou-visitar"],
+          ["Atividades para escolas", "Experiências para jovens estudantes", "/programa-talentos"],
         ],
       },
       {
         title: "Participação",
         links: [
-          ["Visitas ao parque", "Conheça ambientes e empresas", "#contato"],
+          ["Visitas ao parque", "Conheça ambientes e empresas", "/estudar-ou-visitar"],
           ["Empresas parceiras", "Aproxime talentos do mercado", "#contato"],
           ["Seja mentor", "Compartilhe conhecimento e experiência", "#contato"],
         ],
@@ -152,7 +164,7 @@ const megaMenus = {
       title: "Oportunidades em todo o ecossistema",
       text: "Encontre vagas em tecnologia, engenharia, design e outras áreas.",
       link: "Ver vagas abertas",
-      href: "#talentos",
+      href: "/vagas",
     },
   },
   research: {
@@ -169,9 +181,9 @@ const megaMenus = {
       {
         title: "Projetos e parcerias",
         links: [
-          ["Inovação aberta", "Conecte desafios a especialistas", "#contato"],
-          ["Desenvolva um projeto", "Construa soluções com o ecossistema", "#contato"],
-          ["Encontre competências", "Acesse empresas, talentos e pesquisa", "#ecossistema"],
+          ["Inovação aberta", "Conecte desafios a especialistas", "/inovacao-aberta"],
+          ["Desenvolva um projeto", "Construa soluções com o ecossistema", "/inovacao-aberta#desafio"],
+          ["Encontre competências", "Acesse empresas, talentos e pesquisa", "/empresas"],
           ["Resultados e conhecimento", "Veja o impacto de projetos realizados", "#publicacoes"],
         ],
       },
@@ -190,7 +202,7 @@ const megaMenus = {
       title: "Transforme um desafio em projeto",
       text: "Aproxime sua empresa das competências certas para pesquisar, testar e inovar.",
       link: "Encontrar parceiros",
-      href: "#contato",
+      href: "/inovacao-aberta",
     },
   },
   about: {
@@ -234,19 +246,24 @@ const megaMenus = {
 };
 
 const joinOptions = [
-  [RocketLaunch, "Criar uma startup", "Tire uma ideia do papel com a Unitec", "#contato"],
-  [Buildings, "Instalar minha empresa", "Faça parte do ecossistema Tecnosinos", "#contato"],
-  [Briefcase, "Trabalhar no ecossistema", "Encontre vagas e oportunidades", "#talentos"],
-  [GraduationCap, "Estudar ou visitar", "Conheça programas, espaços e atividades", "#talentos"],
-  [Flask, "Desenvolver um projeto", "Encontre competências para inovar", "#contato"],
+  [RocketLaunch, "Criar uma startup", "Tire uma ideia do papel com a Unitec", "/unitec"],
+  [Buildings, "Instalar minha empresa", "Faça parte do ecossistema Tecnosinos", "/empresas"],
+  [Briefcase, "Trabalhar no ecossistema", "Encontre vagas e oportunidades", "/vagas"],
+  [GraduationCap, "Estudar ou visitar", "Conheça programas, espaços e atividades", "/estudar-ou-visitar"],
+  [Flask, "Desenvolver um projeto", "Encontre competências para inovar", "/inovacao-aberta"],
   [Handshake, "Investir ou apoiar", "Conecte-se a negócios e iniciativas", "#contato"],
 ];
 
+const languageOptions = [
+  { code: "pt-BR", short: "PT", label: "Português" },
+  { code: "en", short: "EN", label: "English" },
+];
+
 const pathways = [
-  { icon: RocketLaunch, title: "Quero empreender", text: "Tenho apoio para criar e escalar sua startup." },
-  { icon: UsersThree, title: "Quero fazer parte", text: "Conecte-se ao ecossistema e participe." },
-  { icon: Briefcase, title: "Vagas e trabalho", text: "Encontre oportunidades no Tecnosinos." },
-  { icon: Flask, title: "Inovação aberta", text: "Busque parceiros para inovar com propósito." },
+  { icon: RocketLaunch, title: "Quero empreender", text: "Tenha apoio para criar e escalar sua startup.", href: "/unitec" },
+  { icon: UsersThree, title: "Quero fazer parte", text: "Conecte-se ao ecossistema e participe.", href: "/empresas" },
+  { icon: Briefcase, title: "Vagas e trabalho", text: "Encontre oportunidades no Tecnosinos.", href: "/vagas" },
+  { icon: Flask, title: "Inovação aberta", text: "Busque parceiros para inovar com propósito.", href: "/inovacao-aberta" },
 ];
 
 const partnerLogos = ["EMPRESA 01", "EMPRESA 02", "EMPRESA 03", "EMPRESA 04", "EMPRESA 05", "EMPRESA 06", "EMPRESA 07"];
@@ -349,9 +366,9 @@ function AnimatedNumber({ value, prefix = "", suffix = "", precision = 0 }) {
   );
 }
 
-function Brand({ inverse = false }) {
+function Brand({ inverse = false, onNavigate }) {
   return (
-    <a className={`brand ${inverse ? "brand--inverse" : ""}`} href="#top" aria-label="Tecnosinos — página inicial">
+    <a className={`brand ${inverse ? "brand--inverse" : ""}`} href="/" onClick={onNavigate} aria-label="Tecnosinos — página inicial">
       <img className="brand__logo" src={inverse ? logoWhite : logoGrey} alt="Tecnosinos — Parque Tecnológico São Leopoldo" />
     </a>
   );
@@ -464,9 +481,12 @@ function TripleHelixDiagram() {
 }
 
 export function App() {
+  const [currentPath, setCurrentPath] = useState(() => window.location.pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
   const [joinMenuOpen, setJoinMenuOpen] = useState(false);
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const [language, setLanguage] = useState(languageOptions[0]);
   const [jobFilter, setJobFilter] = useState("todas");
   const [searchOpen, setSearchOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -503,19 +523,51 @@ export function App() {
       observer.disconnect();
       document.documentElement.classList.remove("motion-ready");
     };
+  }, [currentPath]);
+
+  useEffect(() => {
+    const handlePopState = () => setCurrentPath(window.location.pathname);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  useEffect(() => {
+    if (currentPath === "/publicacoes") {
+      document.title = "Publicações — Tecnosinos";
+    } else if (currentPath.startsWith("/publicacoes/")) {
+      document.title = "Tecnosinos amplia conexões internacionais — Tecnosinos";
+    } else if (currentPath === "/empresas") {
+      document.title = "Empresas do ecossistema — Tecnosinos";
+    } else if (currentPath.startsWith("/empresas/")) {
+      document.title = "Altus — Ecossistema Tecnosinos";
+    } else if (currentPath === "/unitec") {
+      document.title = "Incubadora Unitec — Tecnosinos";
+    } else if (currentPath === "/inovacao-aberta") {
+      document.title = "Inovação aberta — Tecnosinos";
+    } else if (currentPath === "/vagas") {
+      document.title = "Vagas no ecossistema — Tecnosinos";
+    } else if (currentPath === "/estudar-ou-visitar") {
+      document.title = "Estudar ou visitar — Tecnosinos";
+    } else if (currentPath === "/programa-talentos") {
+      document.title = "Programa Talentos — Tecnosinos";
+    } else {
+      document.title = "Tecnosinos — Parque Tecnológico São Leopoldo";
+    }
+  }, [currentPath]);
 
   useEffect(() => {
     const closeOnOutsideClick = (event) => {
       if (!headerRef.current?.contains(event.target)) {
         setActiveMegaMenu(null);
         setJoinMenuOpen(false);
+        setLanguageMenuOpen(false);
       }
     };
     const closeOnEscape = (event) => {
       if (event.key !== "Escape") return;
       setActiveMegaMenu(null);
       setJoinMenuOpen(false);
+      setLanguageMenuOpen(false);
       setMenuOpen(false);
     };
 
@@ -530,19 +582,35 @@ export function App() {
   const closeNavigation = () => {
     setActiveMegaMenu(null);
     setJoinMenuOpen(false);
+    setLanguageMenuOpen(false);
     setMenuOpen(false);
   };
 
   const toggleMegaMenu = (menuKey) => {
     setJoinMenuOpen(false);
+    setLanguageMenuOpen(false);
     setSearchOpen(false);
     setActiveMegaMenu((current) => current === menuKey ? null : menuKey);
   };
 
   const toggleJoinMenu = () => {
     setActiveMegaMenu(null);
+    setLanguageMenuOpen(false);
     setSearchOpen(false);
     setJoinMenuOpen((value) => !value);
+  };
+
+  const toggleLanguageMenu = () => {
+    setActiveMegaMenu(null);
+    setJoinMenuOpen(false);
+    setSearchOpen(false);
+    setLanguageMenuOpen((value) => !value);
+  };
+
+  const selectLanguage = (option) => {
+    setLanguage(option);
+    document.documentElement.lang = option.code;
+    setLanguageMenuOpen(false);
   };
 
   const submitNewsletter = (event) => {
@@ -550,11 +618,53 @@ export function App() {
     if (email.trim()) setSubscribed(true);
   };
 
+  const navigate = (target) => {
+    const url = new URL(target, window.location.href);
+    window.history.pushState({}, "", `${url.pathname}${url.hash}`);
+    setCurrentPath(url.pathname);
+    closeNavigation();
+
+    window.setTimeout(() => {
+      if (url.hash) {
+        document.querySelector(url.hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
+    }, 0);
+  };
+
+  const handleRoute = (event, target) => {
+    if (
+      event.defaultPrevented
+      || event.button !== 0
+      || event.metaKey
+      || event.ctrlKey
+      || event.shiftKey
+      || event.altKey
+    ) return;
+
+    event.preventDefault();
+    navigate(target);
+  };
+
+  const handleNavigationLink = (event) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (href?.startsWith("#")) {
+      handleRoute(event, `/${href}`);
+      return;
+    }
+    if (href?.startsWith("/")) {
+      handleRoute(event, href);
+      return;
+    }
+    closeNavigation();
+  };
+
   return (
     <div id="top">
       <header className="site-header" ref={headerRef}>
         <div className="container header-inner">
-          <Brand />
+          <Brand onNavigate={(event) => handleRoute(event, "/")} />
           <nav className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
             {[
               ["park", "O parque"],
@@ -579,12 +689,21 @@ export function App() {
                 </button>
                 {activeMegaMenu === menuKey && (
                   <div className="mobile-mega-wrapper">
-                    <MegaMenu menu={megaMenus[menuKey]} onNavigate={closeNavigation} />
+                    <MegaMenu menu={megaMenus[menuKey]} onNavigate={handleNavigationLink} />
                   </div>
                 )}
               </Fragment>
             ))}
-            <a className="nav-direct-link" href="#publicacoes" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)} onClick={closeNavigation}>Publicações</a>
+            <a
+              className="nav-direct-link"
+              href="/publicacoes"
+              aria-current={currentPath.startsWith("/publicacoes") ? "page" : undefined}
+              onMouseEnter={() => setActiveMegaMenu(null)}
+              onFocus={() => setActiveMegaMenu(null)}
+              onClick={(event) => handleRoute(event, "/publicacoes")}
+            >
+              Publicações
+            </a>
             <button
               className={`nav-trigger ${activeMegaMenu === "about" ? "is-active" : ""}`}
               type="button"
@@ -601,23 +720,56 @@ export function App() {
             </button>
             {activeMegaMenu === "about" && (
               <div className="mobile-mega-wrapper">
-                <MegaMenu menu={megaMenus.about} onNavigate={closeNavigation} />
+                <MegaMenu menu={megaMenus.about} onNavigate={handleNavigationLink} />
               </div>
             )}
             <button className="mobile-join-trigger" type="button" aria-expanded={joinMenuOpen} onClick={toggleJoinMenu}>Quero fazer parte <CaretDown weight="bold" /></button>
-            {joinMenuOpen && <JoinOptions mobile onNavigate={closeNavigation} />}
+            {joinMenuOpen && <JoinOptions mobile onNavigate={handleNavigationLink} />}
           </nav>
           <div className="header-actions">
             <button className="icon-button search-button" onClick={() => setSearchOpen((value) => !value)} aria-label="Abrir busca"><MagnifyingGlass /></button>
+            <div className="language-switcher">
+              <button className={`language-trigger ${languageMenuOpen ? "is-active" : ""}`} type="button" aria-expanded={languageMenuOpen} aria-haspopup="menu" onClick={toggleLanguageMenu}>
+                {language.short}<CaretDown weight="bold" />
+              </button>
+              {languageMenuOpen && (
+                <div className="language-menu" role="menu" aria-label="Selecionar idioma">
+                  {languageOptions.map((option) => (
+                    <button className={option.code === language.code ? "is-selected" : ""} type="button" role="menuitemradio" aria-checked={option.code === language.code} onClick={() => selectLanguage(option)} key={option.code}>
+                      <span>{option.short}</span>{option.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button className={`button button--small join-trigger ${joinMenuOpen ? "is-active" : ""}`} type="button" aria-expanded={joinMenuOpen} onClick={toggleJoinMenu}>Quero fazer parte <CaretDown weight="bold" /></button>
             <button className="icon-button menu-button" onClick={() => setMenuOpen((value) => !value)} aria-label="Abrir menu">{menuOpen ? <X /> : <List />}</button>
           </div>
-          {activeMegaMenu && <div className="desktop-mega-wrapper"><MegaMenu menu={megaMenus[activeMegaMenu]} onNavigate={closeNavigation} /></div>}
-          {joinMenuOpen && <JoinOptions onNavigate={closeNavigation} />}
+          {activeMegaMenu && <div className="desktop-mega-wrapper"><MegaMenu menu={megaMenus[activeMegaMenu]} onNavigate={handleNavigationLink} /></div>}
+          {joinMenuOpen && <JoinOptions onNavigate={handleNavigationLink} />}
           {searchOpen && <div className="search-popover"><input autoFocus aria-label="Buscar no site" placeholder="O que você procura?" /><button aria-label="Buscar"><ArrowRight /></button></div>}
         </div>
       </header>
 
+      {currentPath === "/publicacoes" ? (
+        <PublicationsPage onRoute={handleRoute} />
+      ) : currentPath.startsWith("/publicacoes/") ? (
+        <PublicationArticlePage onRoute={handleRoute} />
+      ) : currentPath === "/empresas" ? (
+        <CompaniesPage onRoute={handleRoute} />
+      ) : currentPath.startsWith("/empresas/") ? (
+        <CompanyProfilePage onRoute={handleRoute} />
+      ) : currentPath === "/unitec" ? (
+        <UnitecPage onRoute={handleRoute} />
+      ) : currentPath === "/inovacao-aberta" ? (
+        <OpenInnovationPage onRoute={handleRoute} />
+      ) : currentPath === "/vagas" ? (
+        <JobsPage onRoute={handleRoute} />
+      ) : currentPath === "/estudar-ou-visitar" ? (
+        <StudyVisitPage onRoute={handleRoute} />
+      ) : currentPath === "/programa-talentos" ? (
+        <TalentsProgramPage onRoute={handleRoute} />
+      ) : (
       <main>
         <section className="hero" id="sobre">
           <div className="container hero-grid" data-reveal>
@@ -633,8 +785,8 @@ export function App() {
           </div>
 
           <div className="container pathway-grid" data-reveal>
-            {pathways.map(({ icon: Icon, title, text }) => (
-              <a href="#contato" className="pathway" key={title}>
+            {pathways.map(({ icon: Icon, title, text, href }) => (
+              <a href={href} className="pathway" onClick={(event) => handleNavigationLink(event)} key={title}>
                 <Icon weight="bold" />
                 <span><strong>{title}</strong><small>{text}</small></span>
                 <ArrowRight weight="bold" className="pathway__arrow" />
@@ -672,7 +824,7 @@ export function App() {
           <div className="container" data-reveal>
             <SectionTitle eyebrow="Inovação aplicada" description="Explore as competências do ecossistema e acesse cada frente de atuação.">Um ecossistema de possibilidades.</SectionTitle>
             <div className="ecosystem-grid">
-              {ecosystem.map(({ icon: Icon, title }) => <a className="ecosystem-card" href="#contato" key={title}><Icon className="ecosystem-card__icon" weight="regular" aria-hidden="true" /><strong>{title}</strong><ArrowRight className="ecosystem-card__arrow" /></a>)}
+              {ecosystem.map(({ icon: Icon, title }) => <a className="ecosystem-card" href="/empresas" onClick={(event) => handleRoute(event, "/empresas")} key={title}><Icon className="ecosystem-card__icon" weight="regular" aria-hidden="true" /><strong>{title}</strong><ArrowRight className="ecosystem-card__arrow" /></a>)}
             </div>
           </div>
         </section>
@@ -708,21 +860,21 @@ export function App() {
               <div className="event-list">{events.map((event, index) => <a className={`event ${index === 0 ? "is-highlighted" : ""}`} href="#contato" key={event.title}><time><b>{event.day}</b><span>{event.month}</span></time><span><small>{event.type}</small><strong>{event.title}</strong><em>{event.meta}</em></span><ArrowRight /></a>)}</div>
             </div>
             <div>
-              <div className="block-heading"><SectionTitle eyebrow="Carreiras">Vagas no ecossistema</SectionTitle><a href="#contato">Ver todas <ArrowRight /></a></div>
+              <div className="block-heading"><SectionTitle eyebrow="Carreiras">Vagas no ecossistema</SectionTitle><a href="/vagas" onClick={(event) => handleRoute(event, "/vagas")}>Ver todas <ArrowRight /></a></div>
               <p className="jobs-intro">Oportunidades em empresas residentes.</p>
               <div className="filter-tabs" aria-label="Filtrar vagas">{["todas", "tecnologia", "engenharia", "design"].map((filter) => <button className={jobFilter === filter ? "is-active" : ""} onClick={() => setJobFilter(filter)} key={filter}>{filter}</button>)}</div>
-              <div className="job-list">{visibleJobs.map((job) => <a className="job" href="#contato" key={job.title}><span><strong>{job.title}</strong><small>{job.company} • São Leopoldo</small></span><em>{job.mode}</em><ArrowRight /></a>)}</div>
+              <div className="job-list">{visibleJobs.map((job) => <a className="job" href="/vagas" onClick={(event) => handleRoute(event, "/vagas")} key={job.title}><span><strong>{job.title}</strong><small>{job.company} • São Leopoldo</small></span><em>{job.mode}</em><ArrowRight /></a>)}</div>
             </div>
           </div>
         </section>
 
         <section className="section publications" id="publicacoes">
           <div className="container" data-reveal>
-            <div className="block-heading block-heading--publications"><SectionTitle eyebrow="Conteúdo e conhecimento">Publicações</SectionTitle><a href="#contato">Ver todas as publicações <ArrowRight /></a></div>
+            <div className="block-heading block-heading--publications"><SectionTitle eyebrow="Conteúdo e conhecimento">Publicações</SectionTitle><a href="/publicacoes" onClick={(event) => handleRoute(event, "/publicacoes")}>Ver todas as publicações <ArrowRight /></a></div>
             <div className="publication-grid">
               {publications.map((post) => {
                 const needsInsetCrop = post.image.includes("workshop") || post.image.includes("coworking");
-                return <a className={`publication-card ${post.featured ? "publication-card--featured" : ""}`} href="#contato" key={post.title}><span className={`publication-media ${needsInsetCrop ? "publication-media--inset" : ""}`}><img src={post.image} alt="" /></span><span className="publication-body"><small>{post.label}</small><strong>{post.title}</strong><em>12 de maio, 2024</em></span></a>;
+                return <a className={`publication-card ${post.featured ? "publication-card--featured" : ""}`} href={featuredPublicationRoute} onClick={(event) => handleRoute(event, featuredPublicationRoute)} key={post.title}><span className={`publication-media ${needsInsetCrop ? "publication-media--inset" : ""}`}><img src={post.image} alt="" /></span><span className="publication-body"><small>{post.label}</small><strong>{post.title}</strong><em>12 de maio, 2024</em></span></a>;
               })}
             </div>
           </div>
@@ -733,12 +885,13 @@ export function App() {
           <div className="join-panel"><h2>Faça parte de algo maior</h2><p>Conecte-se ao ecossistema que transforma ideias em impacto e futuros em realidade.</p><a className="button button--dark" href="mailto:contato@example.com">Quero fazer parte <ArrowRight /></a></div>
         </section>
       </main>
+      )}
 
       <footer className="footer">
         <div className="container footer-grid" data-reveal>
-          <div><Brand inverse /><p>Um ecossistema de inovação que conecta conhecimento, tecnologia e mercado para transformar o futuro.</p><div className="socials"><a href="#" aria-label="LinkedIn"><LinkedinLogo /></a><a href="#" aria-label="Instagram"><InstagramLogo /></a></div></div>
-          <div><strong>Plataforma</strong><a href="#sobre">O parque</a><a href="#ecossistema">Ecossistema</a><a href="#talentos">Talentos</a></div>
-          <div><strong>Contato</strong><a href="mailto:contato@example.com">Fale conosco</a><a href="#publicacoes">Sala de imprensa</a><a href="#talentos">Trabalhe conosco</a></div>
+          <div><Brand inverse onNavigate={(event) => handleRoute(event, "/")} /><p>Um ecossistema de inovação que conecta conhecimento, tecnologia e mercado para transformar o futuro.</p><div className="socials"><a href="#" aria-label="LinkedIn"><LinkedinLogo /></a><a href="#" aria-label="Instagram"><InstagramLogo /></a></div></div>
+          <div><strong>Plataforma</strong><a href="/#sobre" onClick={(event) => handleRoute(event, "/#sobre")}>O parque</a><a href="/#ecossistema" onClick={(event) => handleRoute(event, "/#ecossistema")}>Ecossistema</a><a href="/#talentos" onClick={(event) => handleRoute(event, "/#talentos")}>Talentos</a></div>
+          <div><strong>Contato</strong><a href="mailto:contato@example.com">Fale conosco</a><a href="/publicacoes" onClick={(event) => handleRoute(event, "/publicacoes")}>Sala de imprensa</a><a href="/vagas" onClick={(event) => handleRoute(event, "/vagas")}>Trabalhe conosco</a></div>
           <form className="newsletter" onSubmit={submitNewsletter}><strong>Newsletter</strong><p>Receba novidades sobre inovação, eventos e oportunidades.</p>{subscribed ? <div className="success">Inscrição confirmada. Até breve!</div> : <label><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Seu e-mail" required /><button aria-label="Assinar newsletter"><PaperPlaneTilt /></button></label>}</form>
         </div>
         <div className="container footer-bottom"><span>© 2026 Tecnosinos — Parque Tecnológico São Leopoldo.</span><a href="#">Privacidade</a></div>
