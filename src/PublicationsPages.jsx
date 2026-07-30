@@ -30,7 +30,7 @@ export const archivePublications = [
     slug: featuredPublication.slug,
     image: "/assets/workshop.png",
     imagePosition: "center",
-    category: "ECOSSISTEMA",
+    category: "PARQUE",
     shortDate: "18 jul 2026",
     title: "Novas empresas reforçam o hub de automação e engenharias",
     summary: "Competências complementares ampliam as possibilidades de colaboração dentro do parque.",
@@ -42,7 +42,7 @@ export const archivePublications = [
     category: "TALENTOS",
     shortDate: "10 jul 2026",
     title: "Carreiras em tecnologia: caminhos para começar e evoluir",
-    summary: "Empresas do ecossistema compartilham experiências e oportunidades para novos talentos.",
+    summary: "Empresas do parque compartilham experiências e oportunidades para novos talentos.",
   },
   {
     slug: featuredPublication.slug,
@@ -100,7 +100,7 @@ export const archivePublications = [
   },
 ];
 
-const categories = ["Todas", "Inovação", "Ecossistema", "Talentos", "Pesquisa", "Eventos"];
+const categories = ["Todas", "Inovação", "Parque", "Talentos", "Pesquisa", "Eventos"];
 
 function PublicationCard({ publication, onRoute, compact = false }) {
   const route = `/publicacoes/${publication.slug}`;
@@ -175,7 +175,7 @@ export function PublicationsPage({ onRoute }) {
           </nav>
           <p className="eyebrow">Conteúdo e conhecimento</p>
           <h1>Publicações</h1>
-          <p>Notícias, pesquisas, histórias e conexões que movimentam o ecossistema Tecnosinos.</p>
+          <p>Notícias, pesquisas, histórias e conexões que movimentam o Tecnosinos.</p>
         </div>
       </section>
 
@@ -325,7 +325,7 @@ export function PublicationArticlePage({ onRoute }) {
         </header>
 
         <div className="container article-cover" data-reveal>
-          <img src={featuredPublication.image} alt="Pessoas conectadas em uma atividade do ecossistema Tecnosinos" />
+          <img src={featuredPublication.image} alt="Pessoas conectadas em uma atividade do Tecnosinos" />
         </div>
 
         <div className="container article-layout" data-reveal>
@@ -356,7 +356,7 @@ export function PublicationArticlePage({ onRoute }) {
             <div className="article-tags" aria-label="Temas relacionados">
               <span>Inovação</span>
               <span>Internacionalização</span>
-              <span>Ecossistema</span>
+              <span>Parque</span>
             </div>
             <a className="article-back-link" href={archiveRoute} onClick={(event) => onRoute(event, archiveRoute)}><ArrowLeft /> Voltar para publicações</a>
           </div>

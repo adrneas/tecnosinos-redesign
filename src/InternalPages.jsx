@@ -182,7 +182,7 @@ export function CompaniesPage({ onRoute }) {
           <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Empresas" }]} onRoute={onRoute} />
           <div className="internal-hero__grid">
             <div>
-              <p className="eyebrow">Ecossistema Tecnosinos</p>
+              <p className="eyebrow">Parque Tecnológico Tecnosinos</p>
               <h1>Encontre quem faz a inovação acontecer.</h1>
             </div>
             <p>Empresas, startups e competências conectadas para transformar desafios em novas possibilidades de negócio.</p>
@@ -203,7 +203,7 @@ export function CompaniesPage({ onRoute }) {
         <div className="directory-heading">
           <div>
             <p className="eyebrow">Diretório de empresas</p>
-            <h2>Explore o ecossistema</h2>
+            <h2>Explore o parque</h2>
           </div>
           <span>{visibleCompanies.length} {visibleCompanies.length === 1 ? "empresa encontrada" : "empresas encontradas"}</span>
         </div>
@@ -339,7 +339,7 @@ export function CompanyProfilePage({ onRoute }) {
 
 const unitecBenefits = [
   { icon: UsersThree, title: "Rede que abre portas", text: "Mentores, empresas, pesquisadores e investidores próximos da sua jornada." },
-  { icon: Buildings, title: "Estrutura para crescer", text: "Ambientes de trabalho, laboratórios e serviços no coração do ecossistema." },
+  { icon: Buildings, title: "Estrutura para crescer", text: "Ambientes de trabalho, laboratórios e serviços no coração do parque." },
   { icon: Target, title: "Acompanhamento estratégico", text: "Método, especialistas e conexões adequados a cada estágio do negócio." },
   { icon: GlobeHemisphereWest, title: "Acesso a mercados", text: "Programas e redes para validar soluções no Brasil e no exterior." },
 ];
@@ -361,7 +361,7 @@ export function UnitecPage({ onRoute }) {
             <div className="program-hero__copy">
               <p className="eyebrow">Incubadora Unitec</p>
               <h1>Sua ideia pode transformar o futuro.</h1>
-              <p>Um ambiente para validar, desenvolver e acelerar negócios de base tecnológica conectados a um ecossistema completo.</p>
+              <p>Um ambiente para validar, desenvolver e acelerar negócios de base tecnológica com uma rede completa de apoio.</p>
               <div className="program-hero__actions">
                 <a className="button" href="#modalidades">Encontrar minha modalidade <ArrowRight /></a>
                 <a className="internal-text-link internal-text-link--light" href="mailto:unitec@tecnosinos.com.br">Falar com a Unitec <ArrowUpRight /></a>
@@ -413,7 +413,7 @@ export function UnitecPage({ onRoute }) {
             <small>Para começar</small><RocketLaunch /><h3>Pré-incubação</h3><p>Transforme uma ideia em oportunidade e valide os fundamentos do negócio.</p><span>Ideação e validação</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
           </article>
           <article className="modality-card">
-            <small>Presença no parque</small><Buildings /><h3>Incubação local</h3><p>Estrutura, acompanhamento e conexões no centro do ecossistema.</p><span>Operação presencial</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
+            <small>Presença no parque</small><Buildings /><h3>Incubação local</h3><p>Estrutura, acompanhamento e conexões no centro do parque.</p><span>Operação presencial</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
           </article>
           <article className="modality-card">
             <small>Mais flexibilidade</small><GlobeHemisphereWest /><h3>Incubação híbrida</h3><p>Proximidade quando importa, com uma rotina adaptada ao seu time.</p><span>Presencial + remoto</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
@@ -599,10 +599,10 @@ export function JobsPage({ onRoute }) {
     <main className="internal-page jobs-page">
       <section className="internal-hero jobs-hero">
         <div className="container" data-reveal>
-          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Talentos" }, { label: "Vagas no ecossistema" }]} onRoute={onRoute} />
+          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Talentos" }, { label: "Vagas no Tecnosinos" }]} onRoute={onRoute} />
           <div className="internal-hero__grid">
             <div>
-              <p className="eyebrow">Carreiras no ecossistema</p>
+              <p className="eyebrow">Carreiras no Tecnosinos</p>
               <h1>Seu próximo desafio pode começar aqui.</h1>
             </div>
             <p>Encontre oportunidades em empresas que desenvolvem tecnologia, conhecimento e novos negócios.</p>
@@ -669,11 +669,11 @@ export function JobsPage({ onRoute }) {
       </section>
 
       <PageCta
-        eyebrow="Empresas do ecossistema"
+        eyebrow="Empresas do parque"
         title="Quer atrair novos talentos?"
         text="Converse com a equipe Tecnosinos para divulgar oportunidades e aproximar sua empresa de profissionais conectados ao parque."
         action="Divulgar uma vaga"
-        href="mailto:contato@tecnosinos.com.br?subject=Divulgar uma vaga no ecossistema"
+        href="mailto:contato@tecnosinos.com.br?subject=Divulgar uma vaga no Tecnosinos"
         secondaryAction="Conhecer as empresas"
         secondaryHref="/empresas"
         onRoute={onRoute}
@@ -695,7 +695,7 @@ const studyPaths = [
     icon: MapPin,
     eyebrow: "Para grupos e instituições",
     title: "Visitas ao parque",
-    text: "Conheça os ambientes, as empresas e as conexões que fazem parte do ecossistema Tecnosinos.",
+    text: "Conheça os ambientes, as empresas e as conexões que fazem parte do Tecnosinos.",
     href: "mailto:contato@tecnosinos.com.br?subject=Agendar visita ao Tecnosinos",
     action: "Agendar uma visita",
   },
@@ -730,7 +730,7 @@ export function StudyVisitPage({ onRoute }) {
 
       <section className="container study-paths" data-reveal>
         <div className="internal-section-heading">
-          <div><p className="eyebrow">Escolha sua experiência</p><h2>Há muitas formas de conhecer o ecossistema.</h2></div>
+          <div><p className="eyebrow">Escolha sua experiência</p><h2>Há muitas formas de conhecer o Tecnosinos.</h2></div>
           <p>Encontre o caminho que combina com seu grupo, sua escola ou sua curiosidade.</p>
         </div>
         <div className="study-path-grid">
@@ -766,7 +766,7 @@ export function StudyVisitPage({ onRoute }) {
       <PageCta
         eyebrow="Programa Talentos"
         title="Tecnologia também se aprende vivendo."
-        text="Leve sua turma para conhecer o ecossistema e participar de experiências que ampliam horizontes profissionais."
+        text="Leve sua turma para conhecer o parque e participar de experiências que ampliam horizontes profissionais."
         action="Conhecer o programa"
         href="/programa-talentos"
         secondaryAction="Falar com a equipe"
@@ -780,7 +780,7 @@ export function StudyVisitPage({ onRoute }) {
 const talentExperiences = [
   { icon: Buildings, title: "Conhecer o parque", text: "Uma visita guiada pelas estruturas e pelos ambientes do Tecnosinos." },
   { icon: Flask, title: "Explorar laboratórios", text: "Contato com espaços onde pesquisa e tecnologia se tornam soluções." },
-  { icon: UsersThree, title: "Conversar com quem faz", text: "Trocas com empreendedores e profissionais de startups do ecossistema." },
+  { icon: UsersThree, title: "Conversar com quem faz", text: "Trocas com empreendedores e profissionais de startups do parque." },
   { icon: Robot, title: "Aprender na prática", text: "Oficinas de programação, robótica e empreendedorismo tecnológico." },
 ];
 
@@ -794,7 +794,7 @@ export function TalentsProgramPage({ onRoute }) {
             <div className="program-hero__copy">
               <p className="eyebrow">Programa Talentos</p>
               <h1>Despertar futuros pela tecnologia.</h1>
-              <p>Uma experiência de transformação social que aproxima estudantes do ecossistema de inovação do Tecnosinos.</p>
+              <p>Uma experiência de transformação social que aproxima estudantes do ambiente de inovação do Tecnosinos.</p>
               <div className="program-hero__actions">
                 <a className="button" href="mailto:unitec@unisinos.br?subject=Participar do Programa Talentos">Levar minha escola <ArrowRight /></a>
                 <a className="internal-text-link internal-text-link--light" href="#como-funciona">Como funciona <ArrowRight /></a>
@@ -814,7 +814,7 @@ export function TalentsProgramPage({ onRoute }) {
           <h2>Aproximar jovens da tecnologia abre novos caminhos.</h2>
         </div>
         <div className="talent-program-intro__copy">
-          <p>O Programa Talentos aproxima estudantes do ecossistema Tecnosinos por meio de visitas, encontros e atividades práticas.</p>
+          <p>O Programa Talentos aproxima estudantes do Tecnosinos por meio de visitas, encontros e atividades práticas.</p>
           <p>O objetivo é sensibilizar os alunos para oportunidades de carreira em tecnologia, promover uma aproximação lúdica com a área e estimular o empreendedorismo tecnológico jovem.</p>
         </div>
       </section>
@@ -852,7 +852,7 @@ export function TalentsProgramPage({ onRoute }) {
       <PageCta
         eyebrow="Programa Talentos"
         title="O próximo talento pode estar na sua turma."
-        text="Converse com a equipe e descubra como aproximar seus estudantes do ecossistema Tecnosinos."
+        text="Converse com a equipe e descubra como aproximar seus estudantes do Tecnosinos."
         action="Entrar em contato"
         href="mailto:unitec@unisinos.br?subject=Programa Talentos"
         secondaryAction="Outras formas de visitar"

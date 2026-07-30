@@ -45,10 +45,10 @@ const megaMenus = {
   park: {
     columns: [
       {
-        title: "Conheça o ecossistema",
+        title: "Conheça o parque",
         links: [
           ["Visão geral", "O parque, sua atuação e seus números", "#sobre"],
-          ["Áreas de atuação", "Competências que movem o ecossistema", "#ecossistema"],
+          ["Áreas de atuação", "Competências que movem o parque", "#ecossistema"],
           ["Conexões globais", "Redes, mercados e internacionalização", "#global"],
         ],
       },
@@ -74,12 +74,12 @@ const megaMenus = {
         links: [
           ["Localização e estrutura", "Parque, prédios e pontos de referência", "#contato"],
           ["Como chegar", "Acessos, transporte e estacionamento", "#contato"],
-          ["Mapa dos prédios", "Oriente-se dentro do ecossistema", "#contato"],
+          ["Mapa dos prédios", "Oriente-se dentro do parque", "#contato"],
         ],
       },
     ],
     spotlight: {
-      eyebrow: "Explore o ecossistema",
+      eyebrow: "Explore o parque",
       title: "Mais de 110 empresas conectadas",
       text: "Encontre organizações, startups e competências por área de atuação.",
       link: "Ver diretório de empresas",
@@ -101,7 +101,7 @@ const megaMenus = {
         links: [
           ["Pré-incubação", "Transforme uma ideia em oportunidade", "/unitec#modalidades"],
           ["Incubação local", "Espaço e acompanhamento no parque", "/unitec#modalidades"],
-          ["Incubação híbrida", "Flexibilidade com presença no ecossistema", "/unitec#modalidades"],
+          ["Incubação híbrida", "Flexibilidade com presença no parque", "/unitec#modalidades"],
           ["Incubação a distância", "Desenvolvimento conectado de onde estiver", "/unitec#modalidades"],
         ],
       },
@@ -136,7 +136,7 @@ const megaMenus = {
       {
         title: "Oportunidades",
         links: [
-          ["Vagas no ecossistema", "Trabalhe em empresas inovadoras", "/vagas"],
+          ["Vagas no Tecnosinos", "Trabalhe em empresas inovadoras", "/vagas"],
           ["Bolsas e pesquisa", "Oportunidades de desenvolvimento", "/vagas"],
           ["Trabalhe no parque", "Conecte sua carreira à inovação", "/vagas"],
         ],
@@ -160,7 +160,7 @@ const megaMenus = {
     ],
     spotlight: {
       eyebrow: "Carreiras",
-      title: "Oportunidades em todo o ecossistema",
+      title: "Oportunidades em todo o parque",
       text: "Encontre vagas em tecnologia, engenharia, design e outras áreas.",
       link: "Ver vagas abertas",
       href: "/vagas",
@@ -181,7 +181,7 @@ const megaMenus = {
         title: "Projetos e parcerias",
         links: [
           ["Inovação aberta", "Conecte desafios a especialistas", "/inovacao-aberta"],
-          ["Desenvolva um projeto", "Construa soluções com o ecossistema", "/inovacao-aberta#desafio"],
+          ["Desenvolva um projeto", "Construa soluções com empresas e especialistas", "/inovacao-aberta#desafio"],
           ["Encontre competências", "Acesse empresas, talentos e pesquisa", "/empresas"],
           ["Resultados e conhecimento", "Veja o impacto de projetos realizados", "#publicacoes"],
         ],
@@ -221,14 +221,14 @@ const megaMenus = {
           ["Visão geral", "Impacto para além do parque", "#contato"],
           ["Sustentabilidade e ESG", "Compromissos ambientais, sociais e de governança", "#contato"],
           ["Mulheres Empreendedoras", "Conexões e protagonismo feminino", "#contato"],
-          ["Diversidade e Inclusão", "Um ecossistema plural e acessível", "#contato"],
+          ["Diversidade e Inclusão", "Um ambiente plural e acessível", "#contato"],
           ["Ações Solidárias", "Mobilização que transforma comunidades", "#contato"],
         ],
       },
       {
         title: "Rede e relacionamento",
         links: [
-          ["Parceiros", "Organizações que constroem o ecossistema", "#contato"],
+          ["Parceiros", "Organizações que fortalecem o parque", "#contato"],
           ["Sala de imprensa", "Informações e materiais institucionais", "#publicacoes"],
           ["Contato", "Fale com a equipe Tecnosinos", "#contato"],
         ],
@@ -246,8 +246,8 @@ const megaMenus = {
 
 const joinOptions = [
   [RocketLaunch, "Criar uma startup", "Tire uma ideia do papel com a Unitec", "/unitec"],
-  [Buildings, "Instalar minha empresa", "Faça parte do ecossistema Tecnosinos", "/empresas"],
-  [Briefcase, "Trabalhar no ecossistema", "Encontre vagas e oportunidades", "/vagas"],
+  [Buildings, "Instalar minha empresa", "Faça parte do Tecnosinos", "/empresas"],
+  [Briefcase, "Trabalhar no Tecnosinos", "Encontre vagas e oportunidades", "/vagas"],
   [GraduationCap, "Estudar ou visitar", "Conheça programas, espaços e atividades", "/estudar-ou-visitar"],
   [Flask, "Desenvolver um projeto", "Encontre competências para inovar", "/inovacao-aberta"],
   [Handshake, "Investir ou apoiar", "Conecte-se a negócios e iniciativas", "#contato"],
@@ -260,7 +260,7 @@ const languageOptions = [
 
 const pathways = [
   { icon: RocketLaunch, title: "Quero empreender", text: "Tenha apoio para criar e escalar sua startup.", href: "/unitec" },
-  { icon: UsersThree, title: "Quero fazer parte", text: "Conecte-se ao ecossistema e participe.", href: "/empresas" },
+  { icon: UsersThree, title: "Quero fazer parte", text: "Conecte-se ao Tecnosinos e participe.", href: "/empresas" },
   { icon: Briefcase, title: "Vagas e trabalho", text: "Encontre oportunidades no Tecnosinos.", href: "/vagas" },
   { icon: Flask, title: "Inovação aberta", text: "Busque parceiros para inovar com propósito.", href: "/inovacao-aberta" },
 ];
@@ -293,7 +293,7 @@ const jobs = [
 
 const publications = [
   { image: "/assets/campus-community.png", label: "INOVAÇÃO", title: "Parceria internacional leva IA aplicada à saúde digital", featured: true },
-  { image: "/assets/workshop.png", label: "ECOSSISTEMA", title: "Novas empresas reforçam o hub de automação" },
+  { image: "/assets/workshop.png", label: "PARQUE", title: "Novas empresas reforçam o hub de automação" },
   { image: "/assets/coworking.png", label: "TALENTOS", title: "Carreiras em tecnologia: onde começar" },
   { image: "/assets/workshop.png", label: "PESQUISA", title: "Pesquisadores desenvolvem biofármaco" },
   { image: "/assets/campus-community.png", label: "EVENTOS", title: "Semana da Tecnologia reúne mais de 2 mil participantes" },
@@ -416,7 +416,7 @@ function JoinOptions({ onNavigate, mobile = false }) {
     <div className={`join-menu ${mobile ? "join-menu--mobile" : ""}`} role="region" aria-label="Escolha como fazer parte">
       <div className="join-menu__intro">
         <small>Quero fazer parte</small>
-        <strong>Como podemos conectar você ao ecossistema?</strong>
+        <strong>Como podemos conectar você ao Tecnosinos?</strong>
       </div>
       <div className="join-menu__grid">
         {joinOptions.map(([Icon, title, description, href]) => (
@@ -536,15 +536,15 @@ export function App() {
     } else if (currentPath.startsWith("/publicacoes/")) {
       document.title = "Tecnosinos amplia conexões internacionais — Tecnosinos";
     } else if (currentPath === "/empresas") {
-      document.title = "Empresas do ecossistema — Tecnosinos";
+      document.title = "Empresas do parque — Tecnosinos";
     } else if (currentPath.startsWith("/empresas/")) {
-      document.title = "Altus — Ecossistema Tecnosinos";
+      document.title = "Altus — Parque Tecnológico Tecnosinos";
     } else if (currentPath === "/unitec") {
       document.title = "Incubadora Unitec — Tecnosinos";
     } else if (currentPath === "/inovacao-aberta") {
       document.title = "Inovação aberta — Tecnosinos";
     } else if (currentPath === "/vagas") {
-      document.title = "Vagas no ecossistema — Tecnosinos";
+      document.title = "Vagas — Tecnosinos";
     } else if (currentPath === "/estudar-ou-visitar") {
       document.title = "Estudar ou visitar — Tecnosinos";
     } else if (currentPath === "/programa-talentos") {
@@ -807,7 +807,7 @@ export function App() {
           </div>
         </section>
 
-        <section className="numbers" aria-label="Números do ecossistema">
+        <section className="numbers" aria-label="Números do Tecnosinos">
           <div className="container numbers-grid" data-reveal>
             {ecosystemNumbers.map(({ icon: Icon, label, ...number }) => (
               <div className="number" key={label}>
@@ -821,7 +821,7 @@ export function App() {
 
         <section className="section ecosystem" id="ecossistema">
           <div className="container" data-reveal>
-            <SectionTitle eyebrow="Inovação aplicada" description="Explore as competências do ecossistema e acesse cada frente de atuação.">Um ecossistema de possibilidades.</SectionTitle>
+            <SectionTitle eyebrow="Inovação aplicada" description="Explore as competências do parque e acesse cada frente de atuação.">Muitas possibilidades para inovar.</SectionTitle>
             <div className="ecosystem-grid">
               {ecosystem.map(({ icon: Icon, title }) => <a className="ecosystem-card" href="/empresas" onClick={(event) => handleRoute(event, "/empresas")} key={title}><Icon className="ecosystem-card__icon" weight="regular" aria-hidden="true" /><strong>{title}</strong><ArrowRight className="ecosystem-card__arrow" /></a>)}
             </div>
@@ -859,7 +859,7 @@ export function App() {
               <div className="event-list">{events.map((event, index) => <a className={`event ${index === 0 ? "is-highlighted" : ""}`} href="#contato" key={event.title}><time><b>{event.day}</b><span>{event.month}</span></time><span><small>{event.type}</small><strong>{event.title}</strong><em>{event.meta}</em></span><ArrowRight /></a>)}</div>
             </div>
             <div>
-              <div className="block-heading"><SectionTitle eyebrow="Carreiras">Vagas no ecossistema</SectionTitle><a href="/vagas" onClick={(event) => handleRoute(event, "/vagas")}>Ver todas <ArrowRight /></a></div>
+              <div className="block-heading"><SectionTitle eyebrow="Carreiras">Vagas no Tecnosinos</SectionTitle><a href="/vagas" onClick={(event) => handleRoute(event, "/vagas")}>Ver todas <ArrowRight /></a></div>
               <p className="jobs-intro">Oportunidades em empresas residentes.</p>
               <div className="filter-tabs" aria-label="Filtrar vagas">{["todas", "tecnologia", "engenharia", "design"].map((filter) => <button className={jobFilter === filter ? "is-active" : ""} onClick={() => setJobFilter(filter)} key={filter}>{filter}</button>)}</div>
               <div className="job-list">{visibleJobs.map((job) => <a className="job" href="/vagas" onClick={(event) => handleRoute(event, "/vagas")} key={job.title}><span><strong>{job.title}</strong><small>{job.company} • São Leopoldo</small></span><em>{job.mode}</em><ArrowRight /></a>)}</div>
@@ -881,15 +881,15 @@ export function App() {
 
         <section className="join" id="contato" data-reveal>
           <img src="/assets/campus-community.png" alt="Comunidade reunida no parque de inovação" />
-          <div className="join-panel"><h2>Faça parte de algo maior</h2><p>Conecte-se ao ecossistema que transforma ideias em impacto e futuros em realidade.</p><a className="button button--dark" href="mailto:contato@example.com">Quero fazer parte <ArrowRight /></a></div>
+          <div className="join-panel"><h2>Faça parte de algo maior</h2><p>Conecte-se ao Tecnosinos, onde ideias se transformam em impacto e futuros ganham forma.</p><a className="button button--dark" href="mailto:contato@example.com">Quero fazer parte <ArrowRight /></a></div>
         </section>
       </main>
       )}
 
       <footer className="footer">
         <div className="container footer-grid" data-reveal>
-          <div><Brand inverse onNavigate={(event) => handleRoute(event, "/")} /><p>Um ecossistema de inovação que conecta conhecimento, tecnologia e mercado para transformar o futuro.</p><div className="socials"><a href="#" aria-label="LinkedIn"><LinkedinLogo /></a><a href="#" aria-label="Instagram"><InstagramLogo /></a></div></div>
-          <div><strong>Plataforma</strong><a href="/#sobre" onClick={(event) => handleRoute(event, "/#sobre")}>O parque</a><a href="/#ecossistema" onClick={(event) => handleRoute(event, "/#ecossistema")}>Ecossistema</a><a href="/#talentos" onClick={(event) => handleRoute(event, "/#talentos")}>Talentos</a></div>
+          <div><Brand inverse onNavigate={(event) => handleRoute(event, "/")} /><p>Um parque de inovação que conecta conhecimento, tecnologia e mercado para transformar o futuro.</p><div className="socials"><a href="#" aria-label="LinkedIn"><LinkedinLogo /></a><a href="#" aria-label="Instagram"><InstagramLogo /></a></div></div>
+          <div><strong>Plataforma</strong><a href="/#sobre" onClick={(event) => handleRoute(event, "/#sobre")}>O parque</a><a href="/#ecossistema" onClick={(event) => handleRoute(event, "/#ecossistema")}>Áreas tecnológicas</a><a href="/#talentos" onClick={(event) => handleRoute(event, "/#talentos")}>Talentos</a></div>
           <div><strong>Contato</strong><a href="mailto:contato@example.com">Fale conosco</a><a href="/publicacoes" onClick={(event) => handleRoute(event, "/publicacoes")}>Sala de imprensa</a><a href="/vagas" onClick={(event) => handleRoute(event, "/vagas")}>Trabalhe conosco</a></div>
           <form className="newsletter" onSubmit={submitNewsletter}><strong>Newsletter</strong><p>Receba novidades sobre inovação, eventos e oportunidades.</p>{subscribed ? <div className="success">Inscrição confirmada. Até breve!</div> : <label><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Seu e-mail" required /><button aria-label="Assinar newsletter"><PaperPlaneTilt /></button></label>}</form>
         </div>
