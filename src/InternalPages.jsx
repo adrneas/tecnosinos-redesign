@@ -734,8 +734,8 @@ export function StudyVisitPage({ onRoute }) {
           <p>Encontre o caminho que combina com seu grupo, sua escola ou sua curiosidade.</p>
         </div>
         <div className="study-path-grid">
-          {studyPaths.map(({ icon: Icon, eyebrow, title, text, href, action }, index) => (
-            <a className={index === 0 ? "is-featured" : ""} href={href} onClick={href.startsWith("/") ? (event) => onRoute(event, href) : undefined} key={title}>
+          {studyPaths.map(({ icon: Icon, eyebrow, title, text, href, action }) => (
+            <a href={href} onClick={href.startsWith("/") ? (event) => onRoute(event, href) : undefined} key={title}>
               <small>{eyebrow}</small>
               <Icon />
               <h3>{title}</h3>

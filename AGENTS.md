@@ -32,3 +32,6 @@ When implementing from a selected generated mock, treat that image as the source
 - The Programa Talentos page follows the established internal-page visual system and preserves the source program facts: active since 2011, aimed at 9th-grade, secondary and technical students, with park/lab/company visits, practical workshops, more than 4,000 participants and contact through `unitec@unisinos.br`.
 - In the Talentos mega menu, “Programa Talentos” is the single entry for school-oriented activities; do not add a redundant “Atividades para escolas” item.
 - Treat calling Tecnosinos an “ecossistema” as a copy taboo. Refer to it contextually as the park, Tecnosinos, the community, the network, or the innovation environment. Keep “ecossistema” only when it denotes a genuinely generic or third-party ecosystem.
+- On `/estudar-ou-visitar`, all experience cards share the same neutral default appearance and hover behavior; the Programa Talentos card is not visually featured with a yellow background.
+- In the home-page events list, all events share the same neutral default appearance; no first item is permanently yellow, and the pale yellow treatment is hover-only for every event.
+- Publication article headlines use half of their former responsive font-size scale on both desktop and mobile; this applies to `.article-header h1`, not the publications archive page title.

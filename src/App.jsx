@@ -856,7 +856,7 @@ export function App() {
           <div className="container split-grid" data-reveal>
             <div>
               <div className="block-heading"><SectionTitle eyebrow="Acontece no parque">Próximos eventos</SectionTitle><a href="#contato">Ver agenda completa <ArrowRight /></a></div>
-              <div className="event-list">{events.map((event, index) => <a className={`event ${index === 0 ? "is-highlighted" : ""}`} href="#contato" key={event.title}><time><b>{event.day}</b><span>{event.month}</span></time><span><small>{event.type}</small><strong>{event.title}</strong><em>{event.meta}</em></span><ArrowRight /></a>)}</div>
+              <div className="event-list">{events.map((event) => <a className="event" href="#contato" key={event.title}><time><b>{event.day}</b><span>{event.month}</span></time><span><small>{event.type}</small><strong>{event.title}</strong><em>{event.meta}</em></span><ArrowRight /></a>)}</div>
             </div>
             <div>
               <div className="block-heading"><SectionTitle eyebrow="Carreiras">Vagas no Tecnosinos</SectionTitle><a href="/vagas" onClick={(event) => handleRoute(event, "/vagas")}>Ver todas <ArrowRight /></a></div>
