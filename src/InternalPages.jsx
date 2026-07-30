@@ -146,6 +146,67 @@ function PageCta({ eyebrow, title, text, action, href, onRoute, secondaryAction,
   );
 }
 
+function ConnectionFormSection({
+  id,
+  eyebrow,
+  title,
+  text,
+  benefits,
+  emailLabel = "E-mail",
+  organizationLabel = "Organização",
+  organizationPlaceholder = "Nome da empresa ou instituição",
+  selectLabel,
+  selectPlaceholder,
+  selectOptions,
+  messageLabel,
+  messagePlaceholder,
+  consentText,
+  submitLabel,
+  successEyebrow,
+  successTitle,
+  successText,
+  resetLabel,
+}) {
+  const [submitted, setSubmitted] = useState(false);
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <section className="challenge-form-section" id={id}>
+      <div className="container challenge-form-grid" data-reveal>
+        <div className="challenge-form-copy">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+          <p>{text}</p>
+          <ul>{benefits.map((benefit) => <li key={benefit}><Check />{benefit}</li>)}</ul>
+        </div>
+        {submitted ? (
+          <div className="challenge-success" role="status">
+            <span><Check weight="bold" /></span>
+            <p className="eyebrow">{successEyebrow}</p>
+            <h3>{successTitle}</h3>
+            <p>{successText}</p>
+            <button type="button" onClick={() => setSubmitted(false)}>{resetLabel} <ArrowRight /></button>
+          </div>
+        ) : (
+          <form className="challenge-form" onSubmit={submitForm}>
+            <label><span>Nome</span><input required autoComplete="name" placeholder="Como podemos chamar você?" /></label>
+            <label><span>{emailLabel}</span><input required type="email" autoComplete="email" placeholder="voce@empresa.com.br" /></label>
+            <label><span>{organizationLabel}</span><input required autoComplete="organization" placeholder={organizationPlaceholder} /></label>
+            <label><span>{selectLabel}</span><select required defaultValue=""><option value="" disabled>{selectPlaceholder}</option>{selectOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
+            <label className="challenge-form__wide"><span>{messageLabel}</span><textarea required rows="5" placeholder={messagePlaceholder} /></label>
+            <label className="challenge-form__consent"><input required type="checkbox" /><span>{consentText}</span></label>
+            <button className="button challenge-form__wide" type="submit">{submitLabel} <ArrowRight /></button>
+          </form>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function CompanyCard({ company, onRoute }) {
   const route = "/empresas/altus";
   return (
@@ -351,6 +412,85 @@ const unitecJourney = [
   ["04", "Escale", "Acesse mercado, investimento e novas redes para crescer."],
 ];
 
+const unitecModalities = [
+  {
+    number: "01",
+    icon: RocketLaunch,
+    eyebrow: "100% on-line • parceria VIGGASCO.Lab",
+    title: "Pré-incubação — Acabativa LAB",
+    intro: "Para transformar uma ideia de produto ou serviço em uma oportunidade de negócio estruturada e pronta para avançar.",
+    paragraphs: [
+      "A jornada combina mentorias, oficinas práticas e acompanhamento da equipe gestora para desenvolver o perfil empreendedor e o modelo de negócio.",
+      "Ao longo do programa, a equipe investiga o público-alvo, testa hipóteses, estrutura uma versão mínima da solução e prepara sua comunicação para o mercado.",
+    ],
+    highlights: [
+      "Modelagem de negócio e desenvolvimento do perfil empreendedor",
+      "Validação da solução, proposta de valor e construção do MVP",
+      "Marketing, comercialização e modelagem financeira inicial",
+      "Pitch, conexões estratégicas e orientação legal, fiscal e contábil",
+    ],
+    facts: [["Duração", "6 meses, prorrogáveis por mais 6"], ["Ritmo", "Encontro semanal de 1h30 a 2h"]],
+    format: "Ideação e validação",
+  },
+  {
+    number: "02",
+    icon: Buildings,
+    eyebrow: "Escritório exclusivo • instalações da Unitec",
+    title: "Incubação local",
+    intro: "Para empresas que precisam instalar sua operação no parque e contar com uma estrutura dedicada durante o desenvolvimento do negócio.",
+    paragraphs: [
+      "Os escritórios individualizados variam de 21 m² a 150 m², conforme disponibilidade e necessidade, com valor mensal subsidiado por metro quadrado.",
+      "Na Unitec 1, as salas podem ser personalizadas pela empresa. Na Unitec 2, os ambientes são mobiliados e contam com rede lógica para início imediato das atividades.",
+    ],
+    highlights: [
+      "Ambiente exclusivo para a operação da empresa",
+      "Opções customizáveis ou prontas para uso no modelo plug and play",
+      "Acesso cotidiano às áreas comuns, laboratórios e salas de reunião",
+      "Acompanhamento, capacitação e conexão com empresas e especialistas",
+    ],
+    facts: [["Duração", "3 a 4 anos"], ["Estrutura", "Salas de 21 m² a 150 m²"]],
+    format: "Operação presencial",
+  },
+  {
+    number: "03",
+    icon: GlobeHemisphereWest,
+    eyebrow: "Estação fixa • sala compartilhada",
+    title: "Incubação híbrida",
+    intro: "Para startups que valorizam a presença no parque, mas não precisam de uma sala exclusiva para conduzir sua rotina.",
+    paragraphs: [
+      "A empresa utiliza uma estação de trabalho fixa em ambiente compartilhado e percorre os mesmos estágios de implantação do plano de negócios ou de desenvolvimento de produto.",
+      "A modalidade preserva os direitos, deveres, serviços e oportunidades da incubação presencial, combinando proximidade com uma operação mais flexível.",
+    ],
+    highlights: [
+      "Estação de trabalho fixa e exclusiva em sala compartilhada",
+      "Meeting points, salas de reunião e laboratórios",
+      "Empréstimo de equipamentos e oportunidades de capacitação",
+      "Planejamento, monitoria e demais serviços da incubadora",
+    ],
+    facts: [["Formato", "Presencial + remoto"], ["Espaço", "Ambiente compartilhado"]],
+    format: "Flexibilidade com presença",
+  },
+  {
+    number: "04",
+    icon: MapPin,
+    eyebrow: "Operação externa • conexão com a Unitec",
+    title: "Incubação a distância",
+    intro: "Para startups sediadas fora do Tecnosinos que desejam seguir uma jornada estruturada de desenvolvimento com o apoio da incubadora.",
+    paragraphs: [
+      "O negócio percorre os mesmos estágios de implantação do plano de negócios ou de desenvolvimento de novos produtos, sem usar o endereço do parque como sede.",
+      "A empresa mantém acesso aos serviços, áreas comuns, laboratórios, equipamentos, capacitações, planejamento e monitoria. A adesão é analisada individualmente pela equipe gestora.",
+    ],
+    highlights: [
+      "Acompanhamento com operação sediada fora do parque",
+      "Mesmos direitos e deveres da modalidade presencial",
+      "Uso das estruturas e serviços da incubadora quando necessário",
+      "Avaliação de adesão realizada caso a caso",
+    ],
+    facts: [["Duração", "2 a 3 anos"], ["Investimento", "Mensalidade fixa"]],
+    format: "Desenvolvimento conectado",
+  },
+];
+
 export function UnitecPage({ onRoute }) {
   return (
     <main className="internal-page unitec-page">
@@ -360,16 +500,16 @@ export function UnitecPage({ onRoute }) {
           <div className="program-hero__grid">
             <div className="program-hero__copy">
               <p className="eyebrow">Incubadora Unitec</p>
-              <h1>Sua ideia pode transformar o futuro.</h1>
-              <p>Um ambiente para validar, desenvolver e acelerar negócios de base tecnológica com uma rede completa de apoio.</p>
+              <h1>Sua ideia pode se tornar um negócio.</h1>
+              <p>Para ideias com plano de negócios, startups e empresas nascentes, inovadoras e de base tecnológica.</p>
               <div className="program-hero__actions">
                 <a className="button" href="#modalidades">Encontrar minha modalidade <ArrowRight /></a>
-                <a className="internal-text-link internal-text-link--light" href="mailto:unitec@tecnosinos.com.br">Falar com a Unitec <ArrowUpRight /></a>
+                <a className="internal-text-link internal-text-link--light" href="#incubacao">Falar com a Unitec <ArrowUpRight /></a>
               </div>
             </div>
             <div className="program-hero__visual">
               <img src="/assets/coworking.png" alt="Empreendedores trabalhando em conjunto na Unitec" />
-              <div><strong>25+</strong><span>anos transformando ideias em negócios</span></div>
+              <div><strong>04</strong><span>modalidades para diferentes momentos do negócio</span></div>
             </div>
           </div>
         </div>
@@ -377,10 +517,10 @@ export function UnitecPage({ onRoute }) {
 
       <section className="container program-intro" data-reveal>
         <div>
-          <p className="eyebrow">Empreender conectado</p>
-          <h2>Você não precisa construir tudo sozinho.</h2>
+          <p className="eyebrow">Programa de incubação</p>
+          <h2>Tem uma ideia ou uma startup de base tecnológica?</h2>
         </div>
-        <p>A Unitec combina método, infraestrutura e relacionamentos para reduzir incertezas e aproximar cada startup das pessoas certas.</p>
+        <p>A Unitec oferece ambiente, método e conexões para transformar oportunidades em negócios, desenvolver soluções inovadoras e preparar empresas para novos mercados.</p>
       </section>
 
       <section className="container benefit-grid" data-reveal>
@@ -403,33 +543,57 @@ export function UnitecPage({ onRoute }) {
         </div>
       </section>
 
-      <section className="container modalities-section" id="modalidades" data-reveal>
-        <div className="internal-section-heading">
-          <div><p className="eyebrow">Modalidades</p><h2>Um formato para cada momento.</h2></div>
-          <p>Escolha a experiência que melhor acompanha o estágio e a dinâmica do seu negócio.</p>
+      <section className="modalities-section" id="modalidades">
+        <div className="container internal-section-heading" data-reveal>
+          <div><p className="eyebrow">Modalidades</p><h2>Quatro caminhos para desenvolver seu negócio.</h2></div>
+          <p>Da validação da ideia à operação de uma empresa nascente, escolha a estrutura que acompanha seu momento.</p>
         </div>
-        <div className="modality-grid">
-          <article className="modality-card modality-card--featured">
-            <small>Para começar</small><RocketLaunch /><h3>Pré-incubação</h3><p>Transforme uma ideia em oportunidade e valide os fundamentos do negócio.</p><span>Ideação e validação</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
-          </article>
-          <article className="modality-card">
-            <small>Presença no parque</small><Buildings /><h3>Incubação local</h3><p>Estrutura, acompanhamento e conexões no centro do parque.</p><span>Operação presencial</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
-          </article>
-          <article className="modality-card">
-            <small>Mais flexibilidade</small><GlobeHemisphereWest /><h3>Incubação híbrida</h3><p>Proximidade quando importa, com uma rotina adaptada ao seu time.</p><span>Presencial + remoto</span><a href="mailto:unitec@tecnosinos.com.br">Quero saber mais <ArrowRight /></a>
-          </article>
+        <div className="container modality-sections">
+          {unitecModalities.map(({ number, icon: Icon, eyebrow, title, intro, paragraphs, highlights, facts, format }, index) => (
+            <article className={`modality-section ${index % 2 ? "is-reversed" : ""}`} data-reveal key={number}>
+              <div className="modality-section__visual" aria-hidden="true">
+                <span>{number}</span>
+                <Icon weight="duotone" />
+                <small>{format}</small>
+              </div>
+              <div className="modality-section__content">
+                <p className="eyebrow">{eyebrow}</p>
+                <h3>{title}</h3>
+                <p className="modality-section__intro">{intro}</p>
+                {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                <div className="modality-section__highlights">
+                  <strong>O que você encontra</strong>
+                  <ul>{highlights.map((highlight) => <li key={highlight}><Check />{highlight}</li>)}</ul>
+                </div>
+                <div className="modality-section__facts">
+                  {facts.map(([label, value]) => <div key={label}><small>{label}</small><strong>{value}</strong></div>)}
+                </div>
+                <a className="internal-text-link" href="#incubacao">Conversar sobre esta modalidade <ArrowRight /></a>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <PageCta
-        eyebrow="Próximo passo"
-        title="Vamos descobrir até onde sua ideia pode chegar?"
-        text="Conte um pouco sobre seu projeto e converse com a equipe da Unitec sobre o melhor caminho."
-        action="Apresentar minha ideia"
-        href="mailto:unitec@tecnosinos.com.br"
-        secondaryAction="Explorar empresas"
-        secondaryHref="/empresas"
-        onRoute={onRoute}
+      <ConnectionFormSection
+        id="incubacao"
+        eyebrow="Comece sua jornada"
+        title="Conte sobre sua ideia ou startup."
+        text="Uma descrição inicial já é suficiente. A equipe da Unitec ajuda a entender seu momento e indicar a modalidade mais adequada."
+        benefits={["Conversa inicial com a equipe", "Orientação sobre modalidade e seleção", "Indicação dos próximos passos"]}
+        organizationLabel="Startup ou organização"
+        organizationPlaceholder="Nome do negócio, projeto ou organização"
+        selectLabel="Momento do negócio"
+        selectPlaceholder="Selecione o estágio atual"
+        selectOptions={["Tenho uma ideia", "Estou validando uma solução", "Já tenho uma startup", "Tenho uma empresa nascente"]}
+        messageLabel="O que você quer desenvolver?"
+        messagePlaceholder="Conte brevemente sobre a ideia, solução, público e momento atual do negócio."
+        consentText="Concordo em ser contatado pela equipe da Unitec sobre o Programa de Incubação."
+        submitLabel="Enviar apresentação"
+        successEyebrow="Apresentação recebida"
+        successTitle="Obrigado por compartilhar seu projeto."
+        successText="A equipe da Unitec entrará em contato para conhecer melhor seu momento e combinar o próximo passo."
+        resetLabel="Enviar outro projeto"
       />
     </main>
   );
@@ -443,12 +607,6 @@ const challengeAreas = [
 ];
 
 export function OpenInnovationPage({ onRoute }) {
-  const [submitted, setSubmitted] = useState(false);
-  const submitChallenge = (event) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <main className="internal-page innovation-page">
       <section className="innovation-hero">
@@ -496,35 +654,25 @@ export function OpenInnovationPage({ onRoute }) {
         </div>
       </section>
 
-      <section className="challenge-form-section" id="desafio">
-        <div className="container challenge-form-grid" data-reveal>
-          <div className="challenge-form-copy">
-            <p className="eyebrow">Comece uma conexão</p>
-            <h2>Conte o que sua organização precisa transformar.</h2>
-            <p>Uma descrição inicial já é suficiente. A equipe Tecnosinos ajuda a qualificar a oportunidade e indicar os próximos passos.</p>
-            <ul><li><Check />Conversa inicial com a equipe</li><li><Check />Mapeamento de competências</li><li><Check />Indicação de um caminho de projeto</li></ul>
-          </div>
-          {submitted ? (
-            <div className="challenge-success" role="status">
-              <span><Check weight="bold" /></span>
-              <p className="eyebrow">Desafio recebido</p>
-              <h3>Obrigado por começar essa conversa.</h3>
-              <p>Nossa equipe entrará em contato para entender o contexto e combinar o próximo passo.</p>
-              <button type="button" onClick={() => setSubmitted(false)}>Enviar outro desafio <ArrowRight /></button>
-            </div>
-          ) : (
-            <form className="challenge-form" onSubmit={submitChallenge}>
-              <label><span>Nome</span><input required placeholder="Como podemos chamar você?" /></label>
-              <label><span>E-mail corporativo</span><input required type="email" placeholder="voce@empresa.com.br" /></label>
-              <label><span>Organização</span><input required placeholder="Nome da empresa ou instituição" /></label>
-              <label><span>Área do desafio</span><select required defaultValue=""><option value="" disabled>Selecione uma área</option><option>Tecnologia e dados</option><option>Indústria e engenharia</option><option>Saúde e bem-estar</option><option>Sustentabilidade</option><option>Outro</option></select></label>
-              <label className="challenge-form__wide"><span>Qual desafio você quer resolver?</span><textarea required rows="5" placeholder="Descreva brevemente o contexto, a necessidade e o resultado esperado." /></label>
-              <label className="challenge-form__consent"><input required type="checkbox" /><span>Concordo em ser contatado pela equipe Tecnosinos sobre esta oportunidade.</span></label>
-              <button className="button challenge-form__wide" type="submit">Enviar desafio <ArrowRight /></button>
-            </form>
-          )}
-        </div>
-      </section>
+      <ConnectionFormSection
+        id="desafio"
+        eyebrow="Comece uma conexão"
+        title="Conte o que sua organização precisa transformar."
+        text="Uma descrição inicial já é suficiente. A equipe Tecnosinos ajuda a qualificar a oportunidade e indicar os próximos passos."
+        benefits={["Conversa inicial com a equipe", "Mapeamento de competências", "Indicação de um caminho de projeto"]}
+        emailLabel="E-mail corporativo"
+        selectLabel="Área do desafio"
+        selectPlaceholder="Selecione uma área"
+        selectOptions={["Tecnologia e dados", "Indústria e engenharia", "Saúde e bem-estar", "Sustentabilidade", "Outro"]}
+        messageLabel="Qual desafio você quer resolver?"
+        messagePlaceholder="Descreva brevemente o contexto, a necessidade e o resultado esperado."
+        consentText="Concordo em ser contatado pela equipe Tecnosinos sobre esta oportunidade."
+        submitLabel="Enviar desafio"
+        successEyebrow="Desafio recebido"
+        successTitle="Obrigado por começar essa conversa."
+        successText="Nossa equipe entrará em contato para entender o contexto e combinar o próximo passo."
+        resetLabel="Enviar outro desafio"
+      />
     </main>
   );
 }

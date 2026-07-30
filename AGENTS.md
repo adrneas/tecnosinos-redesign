@@ -35,3 +35,6 @@ When implementing from a selected generated mock, treat that image as the source
 - On `/estudar-ou-visitar`, all experience cards share the same neutral default appearance and hover behavior; the Programa Talentos card is not visually featured with a yellow background.
 - In the home-page events list, all events share the same neutral default appearance; no first item is permanently yellow, and the pale yellow treatment is hover-only for every event.
 - Publication article headlines use half of their former responsive font-size scale on both desktop and mobile; this applies to `.article-header h1`, not the publications archive page title.
+- Home-page job options use the same pale-yellow hover background and transition as the neighboring “Próximos eventos” options.
+- In the home-page Internationalization section, label the country list “Países relacionados ao parque”, not “Países presentes no parque”.
+- `/unitec` adapts the official legacy Programa de Incubação content into the current site system, presents all four modalities as full editorial sections instead of cards, and ends with the same reusable form experience as `/inovacao-aberta`, adapted for startup intake.

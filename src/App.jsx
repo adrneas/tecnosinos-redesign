@@ -847,7 +847,7 @@ export function App() {
               <a className="text-link text-link--light" href="#contato">Conheça nossa atuação <ArrowRight /></a>
             </div>
             <div className="globe-visual"><img src="/map.svg" alt="Mapa-múndi com conexões internacionais animadas" /></div>
-            <div className="countries"><strong>Países presentes no parque</strong>{["Brasil", "Alemanha", "Coreia do Sul", "Holanda", "Índia", "Suécia", "Suíça"].map((country, index) => <span key={country}><b>{String(index + 1).padStart(2, "0")}</b>{country}</span>)}</div>
+            <div className="countries"><strong>Países relacionados ao parque</strong>{["Brasil", "Alemanha", "Coreia do Sul", "Holanda", "Índia", "Suécia", "Suíça"].map((country, index) => <span key={country}><b>{String(index + 1).padStart(2, "0")}</b>{country}</span>)}</div>
           </div>
           <div className="container programs" data-reveal><div><Buildings /><span><strong>Softlanding</strong><small>Apoio para empresas estrangeiras.</small></span></div><div><RocketLaunch /><span><strong>Take off</strong><small>Preparação para novos mercados.</small></span></div><div><Handshake /><span><strong>Redes internacionais</strong><small>Parcerias e conexões globais.</small></span></div></div>
         </section>
