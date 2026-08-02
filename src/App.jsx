@@ -12,6 +12,7 @@ import {
   Cpu,
   Flask,
   GearSix,
+  GlobeHemisphereWest,
   GraduationCap,
   Handshake,
   Heartbeat,
@@ -380,6 +381,160 @@ function SectionTitle({ eyebrow, children, description }) {
       <h2>{children}</h2>
       {description && <p className="section-description">{description}</p>}
     </div>
+  );
+}
+
+const internationalCountries = ["Brasil", "Alemanha", "Coreia do Sul", "Holanda", "Índia", "Suécia", "Suíça"];
+
+const internationalPrograms = [
+  { icon: Buildings, title: "Softlanding", description: "Apoio para empresas estrangeiras." },
+  { icon: RocketLaunch, title: "Take off", description: "Preparação para novos mercados." },
+  { icon: Handshake, title: "Redes internacionais", description: "Parcerias e conexões globais." },
+];
+
+function InternationalizationSection() {
+  const sectionRef = useRef(null);
+  const stageRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const stage = stageRef.current;
+    const video = videoRef.current;
+    if (!section || !stage || !video) return undefined;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let animationFrame = null;
+    let targetProgress = 0;
+    let renderedProgress = 0;
+    let hasRendered = false;
+    let lastVideoSeekAt = -Infinity;
+    const minimumSeekInterval = window.matchMedia("(pointer: coarse)").matches ? 66 : 42;
+
+    const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+    const smoothstep = (start, end, value) => {
+      const progress = clamp((value - start) / (end - start));
+      return progress * progress * (3 - (2 * progress));
+    };
+
+    const render = (progress, timestamp) => {
+      const videoOpacity = smoothstep(0, 0.12, progress) * (1 - smoothstep(0.86, 1, progress));
+      const contentOpacity = smoothstep(0.15, 0.27, progress);
+      const contentY = (1 - contentOpacity) * 22;
+
+      stage.style.setProperty("--global-video-opacity", videoOpacity.toFixed(3));
+      stage.style.setProperty("--global-content-opacity", contentOpacity.toFixed(3));
+      stage.style.setProperty("--global-content-y", `${contentY.toFixed(2)}px`);
+
+      if (video.readyState >= 1 && Number.isFinite(video.duration)) {
+        const targetTime = clamp(progress, 0, 0.995) * video.duration;
+        const timeDifference = Math.abs(video.currentTime - targetTime);
+
+        if (
+          timeDifference > 0.04
+          && !video.seeking
+          && timestamp - lastVideoSeekAt >= minimumSeekInterval
+        ) {
+          video.currentTime = targetTime;
+          lastVideoSeekAt = timestamp;
+        }
+
+        return timeDifference > 0.04;
+      }
+
+      return false;
+    };
+
+    const animate = (timestamp) => {
+      animationFrame = null;
+
+      if (reducedMotion) {
+        stage.style.setProperty("--global-video-opacity", "1");
+        stage.style.setProperty("--global-content-opacity", "1");
+        stage.style.setProperty("--global-content-y", "0px");
+        if (video.readyState >= 1) video.currentTime = Math.min(video.duration * 0.72, video.duration - 0.05);
+        return;
+      }
+
+      const distance = targetProgress - renderedProgress;
+      renderedProgress = Math.abs(distance) < 0.0002
+        ? targetProgress
+        : renderedProgress + (distance * 0.12);
+      const videoNeedsUpdate = render(renderedProgress, timestamp);
+
+      if (Math.abs(targetProgress - renderedProgress) >= 0.0002 || videoNeedsUpdate) {
+        animationFrame = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const updateTarget = () => {
+      const rect = section.getBoundingClientRect();
+      const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+      targetProgress = clamp(-rect.top / scrollDistance);
+
+      if (!hasRendered) {
+        renderedProgress = targetProgress;
+        hasRendered = true;
+      }
+
+      if (animationFrame === null) animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    video.addEventListener("loadedmetadata", updateTarget);
+    window.addEventListener("scroll", updateTarget, { passive: true });
+    window.addEventListener("resize", updateTarget);
+    updateTarget();
+
+    return () => {
+      video.removeEventListener("loadedmetadata", updateTarget);
+      window.removeEventListener("scroll", updateTarget);
+      window.removeEventListener("resize", updateTarget);
+      if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  return (
+    <section className="global-section" id="global" ref={sectionRef} aria-labelledby="global-title">
+      <div className="global-stage" ref={stageRef}>
+        <video
+          className="global-video"
+          ref={videoRef}
+          src="/assets/internationalization-scroll-optimized.mp4"
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          tabIndex="-1"
+          aria-hidden="true"
+        />
+        <div className="global-composition">
+          <div className="global-copy">
+            <p className="eyebrow">Internacionalização</p>
+            <h2 id="global-title">Tecnologia<br />local.<br />Conexões<br />globais.</h2>
+            <p>Conectamos empresas e startups a mercados, parceiros e redes internacionais.</p>
+            <a className="global-link" href="#contato">Conheça nossa atuação <ArrowRight /></a>
+          </div>
+
+          <aside className="countries" aria-label="Países relacionados ao parque">
+            <strong><GlobeHemisphereWest weight="regular" /> Países relacionados ao parque</strong>
+            <div className="countries__list">
+              {internationalCountries.map((country, index) => (
+                <span key={country}><b>{String(index + 1).padStart(2, "0")}</b>{country}<i aria-hidden="true" /></span>
+              ))}
+            </div>
+          </aside>
+
+          <div className="programs" aria-label="Programas de internacionalização">
+            {internationalPrograms.map(({ icon: Icon, title, description }) => (
+              <div className="program" key={title}>
+                <span className="program__icon"><Icon weight="regular" aria-hidden="true" /></span>
+                <span className="program__copy"><strong>{title}</strong><small>{description}</small></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -839,18 +994,7 @@ export function App() {
           </div>
         </section>
 
-        <section className="section global-section" id="global">
-          <div className="container global-grid" data-reveal>
-            <div>
-              <SectionTitle eyebrow="Internacionalização">Tecnologia local.<br />Conexões globais.</SectionTitle>
-              <p>Conectamos empresas e startups a mercados, parceiros e redes internacionais.</p>
-              <a className="text-link text-link--light" href="#contato">Conheça nossa atuação <ArrowRight /></a>
-            </div>
-            <div className="globe-visual"><img src="/map.svg" alt="Mapa-múndi com conexões internacionais animadas" /></div>
-            <div className="countries"><strong>Países relacionados ao parque</strong>{["Brasil", "Alemanha", "Coreia do Sul", "Holanda", "Índia", "Suécia", "Suíça"].map((country, index) => <span key={country}><b>{String(index + 1).padStart(2, "0")}</b>{country}</span>)}</div>
-          </div>
-          <div className="container programs" data-reveal><div><Buildings /><span><strong>Softlanding</strong><small>Apoio para empresas estrangeiras.</small></span></div><div><RocketLaunch /><span><strong>Take off</strong><small>Preparação para novos mercados.</small></span></div><div><Handshake /><span><strong>Redes internacionais</strong><small>Parcerias e conexões globais.</small></span></div></div>
-        </section>
+        <InternationalizationSection />
 
         <section className="section agenda-careers" id="talentos">
           <div className="container split-grid" data-reveal>

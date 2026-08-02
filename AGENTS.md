@@ -37,4 +37,6 @@ When implementing from a selected generated mock, treat that image as the source
 - Publication article headlines use half of their former responsive font-size scale on both desktop and mobile; this applies to `.article-header h1`, not the publications archive page title.
 - Home-page job options use the same pale-yellow hover background and transition as the neighboring “Próximos eventos” options.
 - In the home-page Internationalization section, label the country list “Países relacionados ao parque”, not “Países presentes no parque”.
+- The home-page Internationalization video uses a damped, eased scroll scrub over an extended section; render it at 70% of the stage size, fade the video near the section boundaries, reveal the content only after the video fade-in, and keep that content visible through the end instead of fading it out with the video.
+- Keep the Internationalization scrub lightweight: use the optimized H.264 asset with frequent keyframes and no B-frames, coalesce seeks to the source frame rate on pointer devices, and use a lower seek cadence on coarse-pointer/mobile devices.
 - `/unitec` adapts the official legacy Programa de Incubação content into the current site system, presents all four modalities as full editorial sections instead of cards, and ends with the same reusable form experience as `/inovacao-aberta`, adapted for startup intake.
