@@ -418,7 +418,7 @@ function InternationalizationSection() {
     };
 
     const render = (progress, timestamp) => {
-      const videoOpacity = smoothstep(0, 0.12, progress) * (1 - smoothstep(0.86, 1, progress));
+      const videoOpacity = smoothstep(0, 0.12, progress);
       const contentOpacity = smoothstep(0.15, 0.27, progress);
       const contentY = (1 - contentOpacity) * 22;
 
@@ -427,7 +427,8 @@ function InternationalizationSection() {
       stage.style.setProperty("--global-content-y", `${contentY.toFixed(2)}px`);
 
       if (video.readyState >= 1 && Number.isFinite(video.duration)) {
-        const targetTime = clamp(progress, 0, 0.995) * video.duration;
+        const lastFrameTime = Math.max(video.duration - (1 / 24), 0);
+        const targetTime = clamp(progress) * lastFrameTime;
         const timeDifference = Math.abs(video.currentTime - targetTime);
 
         if (
@@ -470,7 +471,8 @@ function InternationalizationSection() {
     const updateTarget = () => {
       const rect = section.getBoundingClientRect();
       const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-      targetProgress = clamp(-rect.top / scrollDistance);
+      const scrollLead = window.innerHeight * 0.7;
+      targetProgress = clamp((scrollLead - rect.top) / (scrollDistance + scrollLead));
 
       if (!hasRendered) {
         renderedProgress = targetProgress;
